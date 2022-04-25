@@ -1,2 +1,6 @@
+import './style.css';
 import 'normalize.css';
-import './styles/styles.css'
+import {appModule} from './app-module'
+
+
+appModule();
