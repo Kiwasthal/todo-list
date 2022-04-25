@@ -1,16 +1,9 @@
-import {projectFactory} from './factories'
-import {displayModule} from './display-module'
 import { informationModule } from './information-module';
+import { controllerModule } from './controller-module';
 export {appModule}
 
-const appModule = () => {
+const appModule = (() => {
 
+    informationModule.grabElement('projectHeader').addEventListener('click', controllerModule.headerControl);
 
-    let projectLibrary = [];
-
-    let pushToLibrary = (todo) => {
-        this.todoLibrary.push(todo);
-    };
-
-
-};
+})();
