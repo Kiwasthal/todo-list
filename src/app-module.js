@@ -1,5 +1,6 @@
 import {projectFactory} from './factories'
 import {displayModule} from './display-module'
+import { informationModule } from './information-module';
 export {appModule}
 
 const appModule = () => {

@@ -19,7 +19,7 @@
     background-color: rgb(21, 65, 103);
 }
 
-.displayContainer {
+.mainContainer {
     grid-area: 2 / 2 / 3 / 3;
     background: url(./assets/background.jpg);
     background-size:cover;
