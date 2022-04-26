@@ -90,7 +90,14 @@
 img {
     height: 2vh;
     transition: 600ms;
+    filter: drop-shadow(0px 0px 0px #ddd );
+    cursor: pointer;
 }   
+
+img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(1px 1px 1px #0284c7 );
+}
 
 
 .projectsBar:hover  img {
@@ -410,6 +417,8 @@ li:hover {
   .todoView {
     display: flex;
     flex-direction: column;
+    padding: 1vh;
+    border-bottom: 2px solid #6ccaf3;
   }
 
   .imageContainer {
