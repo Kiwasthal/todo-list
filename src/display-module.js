@@ -1,5 +1,6 @@
 import { controllerModule } from "./controller-module";
 import { informationModule } from "./information-module";
+import projectIcon  from "./assets/projects.png"
 export {displayModule};
 
 
@@ -11,6 +12,11 @@ let displayModule = (() => {
             element.removeChild(element.lastElementChild)
         };
     };
+
+    const myProjectIcon = new Image();
+    myProjectIcon.src = projectIcon;
+    informationModule.grabElement('projectsBar').insertBefore(myProjectIcon , informationModule.grabElement('projectHeader'));
+
 
 
     let addTodoButton = document.createElement('button');

@@ -15,6 +15,8 @@ const informationModule = (() => {
             return document.querySelector('.mainContainer');
         case 'projectHeader':
             return document.querySelector('.projectHeader');
+        case 'projectsBar':
+            return document.querySelector('.projectsBar');
         case 'addProject':
             return document.querySelector('.addProject');
         case 'displayInfo':
