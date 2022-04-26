@@ -31,6 +31,8 @@ const informationModule = (() => {
             return document.querySelector('.createProject');
         case 'projectName':
             return document.querySelector('#projectName');
+        case 'projectsHolder':
+            return document.querySelector('.projectsHolder');
     }};
 
     return {

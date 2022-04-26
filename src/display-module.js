@@ -18,14 +18,19 @@ let displayModule = (() => {
     informationModule.grabElement('projectsBar').insertBefore(myProjectIcon , informationModule.grabElement('projectHeader'));
 
 
-
     const addTodoButton = document.createElement('button');
     addTodoButton.classList.add('addTodo');
     addTodoButton.textContent = 'Create todo';
     informationModule.grabElement('sideNav').appendChild(addTodoButton);
 
+    let projectMainDisplay = () => {
+        const projectHolder = document.createElement('div');
+        projectHolder.classList.add('projectsHolder');
+        informationModule.grabElement('displayInfo').appendChild(projectHolder)
+    }
+
     let displayProjectButton = () => {
-        let addProjectButton = document.createElement('button');
+        const addProjectButton = document.createElement('button');
         addProjectButton.classList.add('addProject')
         addProjectButton.textContent = "CREATE PROJECT";
         informationModule.grabElement('displayInfo').style.display = 'grid'
@@ -36,6 +41,7 @@ let displayModule = (() => {
     let headerDisplay = () => {
         emptyDisplay(informationModule.grabElement('displayInfo'));
         displayProjectButton();
+        projectMainDisplay();
     }
 
     let updateProjectsSideNav = () => {
@@ -43,8 +49,17 @@ let displayModule = (() => {
         informationModule.projectsLibrary.forEach(project => {
             let temp = document.createElement('li');
             temp.textContent = project.title;
-            informationModule.grabElement('projectsDisplay')
             informationModule.grabElement('projectsDisplay').appendChild(temp);
+        })
+    }
+
+    let updateProjectsMainDisplay = () => {
+        emptyDisplay(informationModule.grabElement('projectsHolder'));
+        informationModule.projectsLibrary.forEach(project => {
+            let temp = document.createElement('div');
+            temp.textContent = project.title;
+            temp.classList.add('projectSheet')
+            informationModule.grabElement('projectsHolder').appendChild(temp);
         })
     }
 
@@ -55,6 +70,7 @@ let displayModule = (() => {
     return {
         headerDisplay,
         updateProjectsSideNav,
+        updateProjectsMainDisplay,
     }
 
 })();

@@ -23,10 +23,17 @@
 }
 
 .projectsBar {
+    padding: 1vh;
+    border-radius: 20px;
+    align-self:flex-end;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 1vh;
+}
+
+.projectsBar:hover {
+    background-color: #6ccaf3;
 }
 
 
@@ -41,12 +48,13 @@
 }
 
 .displayInfo {
+    margin-top: 5%;
     background-color: #ddd;
     width: 70%;
-    height: 80%;
+    height: auto;
     border-radius: 2%;
-    display: grid;
-    grid-template-rows: 20% 1fr;
+    display: none;
+    padding: 2vw;
 }
 
 .addProject {
@@ -94,9 +102,26 @@ img:hover {
 }
 
 li {
+    cursor: pointer;
     color: #ddd;
     font-size: 1.25rem;
     text-shadow: 0.7px 1px 1px black;
+}
+
+li:hover {
+    border-radius: 20px;
+    background-color: #6ccaf3;  
+}
+
+.projectHolder {
+    padding: 2vw;
+    display: grid;
+    grid-template-rows: 20vh;
+}
+
+.projectSheet {
+    padding: 3vw;
+    border-bottom: 2px solid #3b82f6;
 }
 
 .modal {

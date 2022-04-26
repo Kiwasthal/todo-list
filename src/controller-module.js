@@ -24,6 +24,7 @@ const controllerModule = (() => {
     let finalizeProject = () => {
         createProject();
         displayModule.updateProjectsSideNav();
+        displayModule.updateProjectsMainDisplay();
     }
 
     let openProjectModal = () => {
