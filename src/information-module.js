@@ -31,12 +31,22 @@ const informationModule = (() => {
             return document.querySelector('.createProject');
         case 'projectName':
             return document.querySelector('#projectName');
+        case 'toDoName':
+            return document.querySelector('#toDoName');
+        case 'toDoDate':
+            return document.querySelector('#toDoDate');
+        case 'toDoText':
+            return document.querySelector('toDoText')
         case 'projectsHolder':
             return document.querySelector('.projectsHolder');
         case 'toDoModal':
             return document.querySelector('.toDoModal');
         case 'projectSelect':
             return document.querySelector('.projectSelect');
+        case 'closeToDo':
+            return document.querySelector('.closeToDo');
+        case 'createToDo':
+            return document.querySelector('createToDo');
     }};
 
     return {

@@ -129,6 +129,7 @@ li:hover {
     flex-direction: column;
     border: none;
     border-radius: 3vh;
+    padding: 5vh;
 }
 
 .modal::backdrop {
@@ -142,7 +143,12 @@ li:hover {
     flex-direction: column;
     border: none;
     border-radius: 3vh;
-    
+    box-shadow: 0px 8px 30px 5px black;
+}
+
+.toDoModal::backdrop {
+    background: linear-gradient(45deg, rgb(154, 68, 68) , #38bdf8);
+    opacity: 0.3;
 }
 
 .field__input{ 
@@ -301,14 +307,22 @@ li:hover {
     --fieldBorderColorActive: #3b82f6;
   }
 
-  .box {
+  .firstBox {
     position: absolute;
-    top: 22%;
-    left: 80%;
+    top: 37%;
+    left: 68%;
+    transform: translate(-50%, -50%);
+  }
+
+  .secondBox {
+    position: absolute;
+    top: 57%;
+    left: 68%;
     transform: translate(-50%, -50%);
   }
   
-  .box select {
+  .firstBox select ,
+  .secondBox select {
     background-color: #0563af;
     color: white;
     padding: 12px;
@@ -321,7 +335,8 @@ li:hover {
     outline: none;
   }
   
-  .box::before {
+  .firstBox::before,
+  .secondBox::before {
     content: "\f13a";
     font-family: FontAwesome;
     position: absolute;
@@ -337,12 +352,14 @@ li:hover {
     pointer-events: none;
   }
   
-  .box:hover::before {
+  .firstBox:hover::before,
+  .secondBox:hover::before {
     color: rgba(255, 255, 255, 0.6);
     background-color: rgba(255, 255, 255, 0.2);
   }
   
-  .box select option {
+  .firstBox select option ,
+  .secondBox select option {
     padding: 30px;
   }
 
@@ -354,6 +371,21 @@ li:hover {
     outline: none !important;
     border: 2px solid  #0284c7;
   } 
+
+  .todoContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 17vh 1fr;
+      gap: 2vw;
+  }
+
+  .createToDo {
+      grid-area: 3 / 1 / 4 / 2;
+  }
+
+  .closeToDo {
+      grid-area: 3 / 2 / 4 / 3;
+  }
 
  
 
