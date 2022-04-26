@@ -5,5 +5,6 @@ export {appModule}
 const appModule = (() => {
     
     informationModule.grabElement('projectHeader').addEventListener('click', controllerModule.headerControl);
+    informationModule.grabElement('toDoButton').addEventListener('click', controllerModule.toDoControl);
 
 })();

@@ -27,6 +27,8 @@ const controllerModule = (() => {
         displayModule.updateProjectsMainDisplay();
     }
 
+    
+
     let openProjectModal = () => {
        informationModule.grabElement('modal').showModal();
        informationModule.grabElement('closeModal').addEventListener('click' , () => {
@@ -41,6 +43,15 @@ const controllerModule = (() => {
         informationModule.grabElement('addProject').addEventListener('click', openProjectModal);
     }
 
+    let toDoControl = () => {
+        informationModule.grabElement('toDoModal').showModal();
+        displayModule.updateSelectOptions()
+    }
+
+   
+
+    
+
 
     
 
@@ -50,6 +61,7 @@ const controllerModule = (() => {
     return {
         createProject,
         headerControl,
+        toDoControl,
     }
 
 })();

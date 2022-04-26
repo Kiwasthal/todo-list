@@ -33,6 +33,10 @@ const informationModule = (() => {
             return document.querySelector('#projectName');
         case 'projectsHolder':
             return document.querySelector('.projectsHolder');
+        case 'toDoModal':
+            return document.querySelector('.toDoModal');
+        case 'projectSelect':
+            return document.querySelector('.projectSelect');
     }};
 
     return {

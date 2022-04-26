@@ -53,6 +53,16 @@ let displayModule = (() => {
         })
     }
 
+    let updateSelectOptions = () => {
+        emptyDisplay(informationModule.grabElement('projectSelect'));
+        for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
+            let option = document.createElement('option');
+            option.textContent = informationModule.projectsLibrary[i].title;
+            option.value = informationModule.projectsLibrary[i].title;
+            informationModule.grabElement('projectSelect').appendChild(option);
+        }
+    }
+
     let updateProjectsMainDisplay = () => {
         emptyDisplay(informationModule.grabElement('projectsHolder'));
         informationModule.projectsLibrary.forEach(project => {
@@ -71,6 +81,7 @@ let displayModule = (() => {
         headerDisplay,
         updateProjectsSideNav,
         updateProjectsMainDisplay,
+        updateSelectOptions,
     }
 
 })();
