@@ -34,10 +34,36 @@
                 <span class="field__label">Project Name</span>
             </span>
         </label>
-            
-         
         <button class="closeModal">Close</button>
         <button class="createProject">Create</button>
+    </dialog>
+
+    <dialog class="toDoModal" id="modal">
+        <label for="toDoName" class="field field_v2">
+            <input class="field__input" type="text" name="toDoName" id="toDoName" placeholder="e.g.Title">
+            <span class="field__label-wrap">
+                <span class="field__label">ToDo Name</span>
+            </span>
+        </label>
+
+        <label for="toDoName" class="field field_v2">
+            <input class="field__input" type="date" name="toDoName" id="toDoName" placeholder="e.g.Title">
+            <span class="field__label-wrap">
+                <span class="field__label">Due Date</span>
+            </span>
+        </label>
+
+        <div class="box">
+            <select class="projectSelect">
+              
+            </select>
+          </div>
+       
+
+        <textarea rows="4" cols="60" name="comment" form="usrform" placeholder="Enter Text Here..." style="resize: none;" maxlength="250" ></textarea>
+
+        
+
     </dialog>
     
 </body>
