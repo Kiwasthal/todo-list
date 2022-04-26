@@ -1,6 +1,6 @@
 import { informationModule } from './information-module';
 import { controllerModule } from './controller-module';
-export {appModule}
+export { appModule }
 
 const appModule = (() => {
     

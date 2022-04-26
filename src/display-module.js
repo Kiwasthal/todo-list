@@ -13,6 +13,14 @@ let displayModule = (() => {
         };
     };
 
+    let clearToDoModal = () => {
+        informationModule.grabElement('toDoName').value = "";
+        informationModule.grabElement('toDoDate').value = "";
+        informationModule.grabElement('toDoText').value = "";
+        informationModule.grabElement('prioritySelect').value = "";
+        
+    }
+
     const myProjectIcon = new Image();
     myProjectIcon.src = projectIcon;
     informationModule.grabElement('projectsBar').insertBefore(myProjectIcon , informationModule.grabElement('projectHeader'));
@@ -44,10 +52,26 @@ let displayModule = (() => {
         projectMainDisplay();
     }
 
+    let displayTodoList = (e) => {
+        informationModule.projectsLibrary.forEach(project => {
+            if (project.title === e.target.textContent) {
+                emptyDisplay(informationModule.grabElement('mainContainer'));
+                for (let i = 0 ; i < project.todoLibrary.length ; i++) {
+                    
+                    let todoContainer = document.createElement('div')
+                    todoContainer.classList.add('todoView');
+                    informationModule.grabElement('mainContainer').appendChild(todoContainer)
+                    
+                }
+            }
+        })
+    }
+
     let updateProjectsSideNav = () => {
         emptyDisplay(informationModule.grabElement('projectsDisplay'));
         informationModule.projectsLibrary.forEach(project => {
             let temp = document.createElement('li');
+            temp.addEventListener('click' , displayTodoList )
             temp.textContent = project.title;
             informationModule.grabElement('projectsDisplay').appendChild(temp);
         })
@@ -82,6 +106,7 @@ let displayModule = (() => {
         updateProjectsSideNav,
         updateProjectsMainDisplay,
         updateSelectOptions,
+        clearToDoModal,
     }
 
 })();

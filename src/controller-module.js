@@ -21,6 +21,8 @@ const controllerModule = (() => {
     }
 
     //Module
+    
+
 
     let createProject = () => {
         if (informationModule.grabElement('projectName').value === "" ) 
@@ -43,10 +45,8 @@ const controllerModule = (() => {
         for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
             if (informationModule.projectsLibrary[i].title === informationModule.grabElement('projectSelect').value) {
                informationModule.projectsLibrary[i].insertTodo(todo);
-               console.log(informationModule.projectsLibrary);
             }
         }
-
     }
 
     let finalizeProject = () => {
@@ -57,9 +57,9 @@ const controllerModule = (() => {
 
     let finalizeTodo = () => {
         createToDo();  
+        displayModule.clearToDoModal();
+        informationModule.grabElement('toDoModal').close();
     }
-    
-
     
 
     let openProjectModal = () => {
@@ -84,14 +84,6 @@ const controllerModule = (() => {
         });
         informationModule.grabElement('createToDo').addEventListener('click' , finalizeTodo)
     }
-
-   
-
-    
-
-
-    
-
 
 
 
