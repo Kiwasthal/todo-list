@@ -37,8 +37,15 @@ const controllerModule = (() => {
         let todoTitle = informationModule.grabElement('toDoName').value;
         let todoDate = informationModule.grabElement('toDoDate').value;
         let todoText = informationModule.grabElement('toDoText').value;
+        let todoPriority = informationModule.grabElement('prioritySelect').value;
 
-        let todo = todoFactory(todoTitle , todoDate , todoText ,  )
+        let todo = todoFactory(todoTitle , todoDate , todoText , todoPriority );
+        for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
+            if (informationModule.projectsLibrary[i].title === informationModule.grabElement('projectSelect').value) {
+               informationModule.projectsLibrary[i].insertTodo(todo);
+               console.log(informationModule.projectsLibrary);
+            }
+        }
 
     }
 

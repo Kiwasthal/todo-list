@@ -36,7 +36,7 @@ const informationModule = (() => {
         case 'toDoDate':
             return document.querySelector('#toDoDate');
         case 'toDoText':
-            return document.querySelector('toDoText')
+            return document.querySelector('.todoText')
         case 'projectsHolder':
             return document.querySelector('.projectsHolder');
         case 'toDoModal':
@@ -47,6 +47,8 @@ const informationModule = (() => {
             return document.querySelector('.closeToDo');
         case 'createToDo':
             return document.querySelector('.createToDo');
+        case 'prioritySelect':
+            return document.querySelector('.prioritySelect');
     }};
 
     return {
