@@ -1,6 +1,10 @@
 import { controllerModule } from "./controller-module";
 import { informationModule } from "./information-module";
-import projectIcon  from "./assets/projects.png"
+import projectIcon  from "./assets/projects.png";
+import expandIcon from "./assets/expand.svg";
+import editIcon from "./assets/edit.svg";
+import priorityIcon from "./assets/priority.svg"
+import deleteIcon from "./assets/delete.svg"
 export {displayModule};
 
 
@@ -23,6 +27,7 @@ let displayModule = (() => {
 
     const myProjectIcon = new Image();
     myProjectIcon.src = projectIcon;
+    myProjectIcon.classList.add('projectIcon');
     informationModule.grabElement('projectsBar').insertBefore(myProjectIcon , informationModule.grabElement('projectHeader'));
 
 
@@ -55,12 +60,43 @@ let displayModule = (() => {
     let displayTodoList = (e) => {
         informationModule.projectsLibrary.forEach(project => {
             if (project.title === e.target.textContent) {
-                emptyDisplay(informationModule.grabElement('mainContainer'));
+                emptyDisplay(informationModule.grabElement('displayInfo'));
                 for (let i = 0 ; i < project.todoLibrary.length ; i++) {
                     
-                    let todoContainer = document.createElement('div')
+                    let todoContainer = document.createElement('div');
                     todoContainer.classList.add('todoView');
-                    informationModule.grabElement('mainContainer').appendChild(todoContainer)
+
+                    let todoHeader = document.createElement('h2');
+
+                    todoHeader.textContent = project.todoLibrary[i].toDoTitle;
+
+                    let imageContainer = document.createElement('div');
+                    imageContainer.classList.add('imageContainer');
+
+                    const myExpandIcon = new Image();
+                    myExpandIcon.src = expandIcon;
+                    imageContainer.appendChild(myExpandIcon);
+
+                    const myEditIcon = new Image();
+                    myEditIcon.src = editIcon;
+                    imageContainer.appendChild(myEditIcon);
+
+                    myEditIcon.addEventListener('click' , () => {
+                        alert('wow')
+                    })
+
+                    const myPriorityIcon = new Image();
+                    myPriorityIcon.src = priorityIcon;
+                    imageContainer.appendChild(myPriorityIcon);
+
+                    const myDeleteIcon = new Image();
+                    myDeleteIcon.src = deleteIcon;
+                    imageContainer.appendChild(myDeleteIcon);
+                    
+                    todoContainer.appendChild(todoHeader);
+                    todoContainer.appendChild(imageContainer);
+                    
+                    informationModule.grabElement('displayInfo').appendChild(todoContainer);
                     
                 }
             }
