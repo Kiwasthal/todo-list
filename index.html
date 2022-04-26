@@ -28,7 +28,14 @@
     </div>
 
     <dialog class="modal" id="modal">
-        <input type="text" name="projectName" id="projectName" placeholder="Project Title">
+        <label for="projectName" class="field field_v2">
+            <input class="field__input" type="text" name="projectName" id="projectName" placeholder="e.g.Title">
+            <span class="field__label-wrap">
+                <span class="field__label">Project Name</span>
+            </span>
+        </label>
+            
+         
         <button class="closeModal">Close</button>
         <button class="createProject">Create</button>
     </dialog>
