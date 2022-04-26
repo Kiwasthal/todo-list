@@ -13,9 +13,12 @@ const controllerModule = (() => {
     };
 
     let createProject = () => {
+        if (informationModule.grabElement('projectName').value === "" ) 
+            return alert('Please insert a name for the project')
         let temp = informationModule.grabElement('projectName').value;
         let project = projectFactory(temp);
-        addToProjectsLibary(project);
+        addToProjectsLibary(project);  
+        informationModule.grabElement('modal').close();
     };
 
     let finalizeProject = () => {
@@ -26,7 +29,7 @@ const controllerModule = (() => {
     let openProjectModal = () => {
        informationModule.grabElement('modal').showModal();
        informationModule.grabElement('closeModal').addEventListener('click' , () => {
-        informationModule.grabElement('modal').close();  
+            informationModule.grabElement('modal').close();  
        })
        informationModule.grabElement('createProject').addEventListener('click', finalizeProject)
     }

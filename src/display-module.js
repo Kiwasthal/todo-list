@@ -19,7 +19,7 @@ let displayModule = (() => {
 
 
 
-    let addTodoButton = document.createElement('button');
+    const addTodoButton = document.createElement('button');
     addTodoButton.classList.add('addTodo');
     addTodoButton.textContent = 'Create todo';
     informationModule.grabElement('sideNav').appendChild(addTodoButton);
