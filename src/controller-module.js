@@ -13,21 +13,28 @@ const controllerModule = (() => {
     };
 
     let createProject = () => {
-        //Test line, rework in final build
-        let temp = prompt('project name');
+        let temp = informationModule.grabElement('projectName').value;
         let project = projectFactory(temp);
         addToProjectsLibary(project);
     };
 
-    let issueProjectChange = () => {
+    let finalizeProject = () => {
         createProject();
         displayModule.updateProjectsSideNav();
+    }
+
+    let openProjectModal = () => {
+       informationModule.grabElement('modal').showModal();
+       informationModule.grabElement('closeModal').addEventListener('click' , () => {
+        informationModule.grabElement('modal').close();  
+       })
+       informationModule.grabElement('createProject').addEventListener('click', finalizeProject)
     }
 
 
     let headerControl = () => {
         displayModule.headerDisplay();
-        informationModule.grabElement('addProject').addEventListener('click', issueProjectChange);
+        informationModule.grabElement('addProject').addEventListener('click', openProjectModal);
     }
 
 

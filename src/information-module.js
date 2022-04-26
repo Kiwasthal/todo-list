@@ -17,6 +17,18 @@ const informationModule = (() => {
             return document.querySelector('.projectHeader');
         case 'addProject':
             return document.querySelector('.addProject');
+        case 'displayInfo':
+            return document.querySelector('.displayInfo');
+        case 'projectsDisplay':
+            return document.querySelector('.projectsDisplay');
+        case 'modal':
+            return document.querySelector('.modal');
+        case 'closeModal':
+            return document.querySelector('.closeModal');
+        case 'createProject':
+            return document.querySelector('.createProject');
+        case 'projectName':
+            return document.querySelector('#projectName');
     }};
 
     return {

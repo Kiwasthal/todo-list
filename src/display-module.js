@@ -19,26 +19,27 @@ let displayModule = (() => {
     informationModule.grabElement('sideNav').appendChild(addTodoButton);
 
     let displayProjectButton = () => {
-    let addProjectButton = document.createElement('button');
-    addProjectButton.classList.add('addProject')
-    addProjectButton.textContent = "Create a project";
-    informationModule.grabElement('mainContainer').appendChild(addProjectButton);
+        let addProjectButton = document.createElement('button');
+        addProjectButton.classList.add('addProject')
+        addProjectButton.textContent = "CREATE PROJECT";
+        informationModule.grabElement('displayInfo').style.display = 'grid'
+        informationModule.grabElement('displayInfo').appendChild(addProjectButton);
     };
-
-
-    let updateProjectsSideNav = () => {
-        emptyDisplay(informationModule.grabElement('projectHeader'));
-        informationModule.projectsLibrary.forEach(project => {
-            let temp = document.createElement('h5');
-            temp.textContent = project.title;
-            informationModule.grabElement('projectHeader').appendChild(temp);
-        })
-    }
     
 
     let headerDisplay = () => {
-        emptyDisplay(informationModule.grabElement('mainContainer'));
+        emptyDisplay(informationModule.grabElement('displayInfo'));
         displayProjectButton();
+    }
+
+    let updateProjectsSideNav = () => {
+        emptyDisplay(informationModule.grabElement('projectsDisplay'));
+        informationModule.projectsLibrary.forEach(project => {
+            let temp = document.createElement('li');
+            temp.textContent = project.title;
+            informationModule.grabElement('projectsDisplay')
+            informationModule.grabElement('projectsDisplay').appendChild(temp);
+        })
     }
 
 
