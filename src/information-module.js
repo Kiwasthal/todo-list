@@ -46,7 +46,7 @@ const informationModule = (() => {
         case 'closeToDo':
             return document.querySelector('.closeToDo');
         case 'createToDo':
-            return document.querySelector('createToDo');
+            return document.querySelector('.createToDo');
     }};
 
     return {

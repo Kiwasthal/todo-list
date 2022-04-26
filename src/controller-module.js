@@ -49,7 +49,7 @@ const controllerModule = (() => {
     }
 
     let finalizeTodo = () => {
-        
+        createToDo();  
     }
     
 
