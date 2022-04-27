@@ -68,19 +68,67 @@ let displayModule = (() => {
        return check === 'High' ? '#d72915' : check === 'Medium' ? '#d0a415' : '#1a901a';
     }
 
+    let changePriority = (check) => {
+        return check === 'High' ? 'Medium' : check === 'Medium' ? 'Low' : 'High';
+    }
+
     let expandTodo = (element , info) => {
-        if (element.classList.contains('active')) {
-            element.classList.remove('active');
+        let todoText = document.createElement('p');
+        if (element.classList.contains('expanded')) {
+            let remove = element.querySelector('p');
+            element.classList.remove('expanded');
+            element.removeChild(remove);
             element.style.height = 'auto';
-            element.removeChild(todoText);
         } else {
             element.style.height = '20vh';
-            element.classList.add('active');
-            let todoText = document.createElement('p');
+            element.classList.add('expanded');
             todoText.textContent = info;
             todoText.classList.add('todoText');
             element.appendChild(todoText);
         }
+    }
+
+    let editTodo = (container) => {
+
+        let todoHeader = container.querySelector('.todoHeader');
+        let todoDate = container.querySelector('.todoDate');
+        let inputNewHeader = document.createElement('input');
+        let inputNewDate = document.createElement('input');
+        inputNewHeader.classList.add('newHeader');
+        inputNewDate.classList.add('newDate');
+        inputNewHeader.type = 'text';
+        inputNewHeader.value = todoHeader.textContent;
+        inputNewDate.type = 'date'
+        inputNewDate.value = todoDate.textContent;
+        container.removeChild(todoHeader);
+        container.removeChild(todoDate);
+        container.appendChild(inputNewHeader);
+        container.appendChild(inputNewDate);
+        container.classList.add('editing');
+        
+    }
+
+
+    let saveTodo = (container) => {
+        container.classList.remove('editing');
+        let grabHeader = container.querySelector('.newHeader');
+        let grabDate = container.querySelector('.newDate');
+
+        let todoHeader = document.createElement('h2');
+        let todoDate = document.createElement('h2');
+
+        todoHeader.classList.add('todoHeader');
+        todoDate.classList.add('todoDate');
+
+        todoHeader.textContent = grabHeader.value;
+        
+        todoDate.textContent = grabDate.value;
+        
+        container.removeChild(grabHeader);
+        container.removeChild(grabDate);
+        container.appendChild(todoHeader);
+        container.appendChild(todoDate);
+
     }
     
     //Main Todo Display logic
@@ -135,11 +183,24 @@ let displayModule = (() => {
                         expandTodo(todoContainer , project.todoLibrary[i].description);
                     });
 
-                    
+                    myPriorityIcon.addEventListener('click', () => {
+                        project.todoLibrary[i].priority = changePriority(project.todoLibrary[i].priority);
+                        todoContainer.style.borderLeftColor = assignPriorityColor(project.todoLibrary[i].priority);
+                    })
+
+                    myEditIcon.addEventListener('click', () => {
+                        if (todoContainer.classList.contains('editing')) {
+                            saveTodo(todoContainer, project.todoLibrary[i].toDoTitle , project.todoLibrary[i].date);
+                            project.todoLibrary[i].toDoTitle = todoContainer.querySelector('.todoHeader').textContent;
+                            project.todoLibrary[i].date = todoContainer.querySelector('.todoDate').textContent;
+                        } else {
+                            editTodo(todoContainer)
+                        }
+                           
+                    });
                    
 
                     // myEditIcon.addEventListener('click')
-                    // myPriorityIcon.addEventListener('click')
                     // myDeleteIcon.addEventListener('click')
                     
                     todoContainer.appendChild(todoHeader);
