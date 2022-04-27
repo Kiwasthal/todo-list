@@ -7,6 +7,7 @@ import priorityIcon from "./assets/priority.svg"
 import deleteIcon from "./assets/delete.svg"
 import barsIcon from "./assets/bars.svg"
 import saveIcon from "./assets/save.svg"
+import dropIcon from "./assets/drop.svg"
 export { displayModule };
 
 
@@ -32,12 +33,17 @@ let displayModule = (() => {
     myBarsIcon.src = barsIcon;
     myBarsIcon.classList.add('barsIcon');
     informationModule.grabElement('navbar').appendChild(myBarsIcon);
+    
+
 
     const myProjectIcon = new Image();
     myProjectIcon.src = projectIcon;
     myProjectIcon.classList.add('projectIcon');
     informationModule.grabElement('projectsBar').insertBefore(myProjectIcon , informationModule.grabElement('projectHeader'));
-
+    const myDropIcon = new Image();
+    myDropIcon.src = dropIcon;
+    myDropIcon.classList.add('dropIcon');
+    informationModule.grabElement('projectsBar').appendChild(myDropIcon);
 
     const addTodoButton = document.createElement('button');
     addTodoButton.classList.add('addTodo');
@@ -144,6 +150,21 @@ let displayModule = (() => {
         container.appendChild(todoDate);
 
     }
+
+    let replaceIcon = (container , icon , reference) => {
+        container.removeChild(icon)
+        const mySaveIcon = new Image();
+        mySaveIcon.src = saveIcon;
+        mySaveIcon.classList.add('saveIcon');
+        container.insertBefore(mySaveIcon , reference);
+    }
+
+    let replaceSaveIcon = (container ,  newIcon , reference) => {
+        let replace = document.querySelector('.saveIcon');
+        container.removeChild(replace);
+        container.insertBefore(newIcon,reference)
+        
+    }
     
     //Main Todo Display logic
 
@@ -180,6 +201,7 @@ let displayModule = (() => {
 
                     const myEditIcon = new Image();
                     myEditIcon.src = editIcon;
+                    myEditIcon.classList.add('editIcon');
                     imageContainer.appendChild(myEditIcon);
 
                     const myPriorityIcon = new Image();
@@ -203,15 +225,19 @@ let displayModule = (() => {
                     })
 
                     myEditIcon.addEventListener('click', () => {
-                        if (todoContainer.classList.contains('editing')) {
-                            saveTodo(todoContainer, project.todoLibrary[i].toDoTitle , project.todoLibrary[i].date);
-                            project.todoLibrary[i].toDoTitle = todoContainer.querySelector('.todoHeader').textContent;
-                            project.todoLibrary[i].date = todoContainer.querySelector('.todoDate').textContent;
-                        } else {
+                       
+                            replaceIcon(imageContainer , myEditIcon , myPriorityIcon);
                             editTodo(todoContainer)
-                        }
+                            document.querySelector('.saveIcon').addEventListener('click', () => {
+                                saveTodo(todoContainer, project.todoLibrary[i].toDoTitle , project.todoLibrary[i].date);
+                                replaceSaveIcon(imageContainer , myEditIcon , myPriorityIcon);
+                                project.todoLibrary[i].toDoTitle = todoContainer.querySelector('.todoHeader').textContent;
+                                project.todoLibrary[i].date = todoContainer.querySelector('.todoDate').textContent;
+                            })
                            
                     });
+
+                    
                    
 
                     // myEditIcon.addEventListener('click')
