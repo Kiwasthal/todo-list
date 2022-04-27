@@ -7,6 +7,8 @@ const informationModule = (() => {
     let grabElement = (item) => {
 
     switch(item) {
+        case 'navbar':
+            return document.querySelector('.navbar');
         case 'sideNav':
             return document.querySelector('.sidenav');
         case 'toDoButton':
@@ -49,6 +51,8 @@ const informationModule = (() => {
             return document.querySelector('.createToDo');
         case 'prioritySelect':
             return document.querySelector('.prioritySelect');
+        case 'barsIcon':
+            return document.querySelector('.barsIcon');
     }};
 
     return {

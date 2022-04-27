@@ -5,6 +5,8 @@ import expandIcon from "./assets/expand.svg";
 import editIcon from "./assets/edit.svg";
 import priorityIcon from "./assets/priority.svg"
 import deleteIcon from "./assets/delete.svg"
+import barsIcon from "./assets/bars.svg"
+import saveIcon from "./assets/save.svg"
 export { displayModule };
 
 
@@ -26,7 +28,10 @@ let displayModule = (() => {
     }
      
 
-
+    const myBarsIcon = new Image();
+    myBarsIcon.src = barsIcon;
+    myBarsIcon.classList.add('barsIcon');
+    informationModule.grabElement('navbar').appendChild(myBarsIcon);
 
     const myProjectIcon = new Image();
     myProjectIcon.src = projectIcon;
@@ -38,6 +43,15 @@ let displayModule = (() => {
     addTodoButton.classList.add('addTodo');
     addTodoButton.textContent = 'Create todo';
     informationModule.grabElement('sideNav').appendChild(addTodoButton);
+
+    let toggleSideNav = () => {
+        if (informationModule.grabElement('sideNav').classList.contains('sidenavHide')){
+            informationModule.grabElement('sideNav').classList.remove('sidenavHide')
+
+        } else {
+            informationModule.grabElement('sideNav').classList.add('sidenavHide');
+        }
+    }
 
     let projectMainDisplay = () => {
         const projectHolder = document.createElement('div');
@@ -254,6 +268,7 @@ let displayModule = (() => {
         updateProjectsMainDisplay,
         updateSelectOptions,
         clearToDoModal,
+        toggleSideNav
     }
 
 })();
