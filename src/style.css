@@ -142,6 +142,7 @@ li:hover {
     border: none;
     border-radius: 3vh;
     padding: 5vh;
+    box-shadow: 0px 8px 30px 5px black;
 }
 
 .modal::backdrop {
@@ -399,9 +400,7 @@ li:hover {
       grid-area: 3 / 2 / 4 / 3;
   }
 
-  h2 {
-      margin: 0;
-  }
+  
 
   h3 {
       margin: 0;
@@ -415,19 +414,53 @@ li:hover {
   }
 
   .todoView {
-    display: flex;
-    flex-direction: column;
-    padding: 1vh;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 1vh 1vh 1vh 0vh;
+    border-left: 1.5vh solid black;
     border-bottom: 2px solid #6ccaf3;
   }
 
+  .todoHeader {
+    margin: 0;
+    padding: 1vh;
+  }
+
+  .todoDate {
+    margin: 0;
+    padding: 1vh;
+    justify-self: flex-end;
+  }
+
+  .todoText {
+    grid-area: 2 / 1 / 3 / 2;
+    padding: 1vh;
+  }
+
   .imageContainer {
+      grid-area: 2 / 2 / 3 / 3;
       align-self: flex-end;
+      justify-self: flex-end;
       display: flex;
       gap: 2vw;
   }
+
+  p {
+    margin: 0;
+  }
  
 
-  
-  
-  
+dialog[open] {
+    -webkit-animation: show 1s ease normal;
+}
+@-webkit-keyframes show{
+    from {
+        transform: translateY(-110%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+

@@ -5,11 +5,12 @@ import expandIcon from "./assets/expand.svg";
 import editIcon from "./assets/edit.svg";
 import priorityIcon from "./assets/priority.svg"
 import deleteIcon from "./assets/delete.svg"
-export {displayModule};
+export { displayModule };
 
 
 
 let displayModule = (() => {
+
 
     let emptyDisplay = (element) => {
         while (element.lastElementChild) {
@@ -21,9 +22,11 @@ let displayModule = (() => {
         informationModule.grabElement('toDoName').value = "";
         informationModule.grabElement('toDoDate').value = "";
         informationModule.grabElement('toDoText').value = "";
-        informationModule.grabElement('prioritySelect').value = "";
-        
+        informationModule.grabElement('prioritySelect').value = "";  
     }
+     
+
+
 
     const myProjectIcon = new Image();
     myProjectIcon.src = projectIcon;
@@ -55,20 +58,55 @@ let displayModule = (() => {
         emptyDisplay(informationModule.grabElement('displayInfo'));
         displayProjectButton();
         projectMainDisplay();
+    };
+
+    //To do creation Funtion
+
+    
+
+    let assignPriorityColor = (check) => {
+       return check === 'High' ? '#d72915' : check === 'Medium' ? '#d0a415' : '#1a901a';
     }
+
+    let expandTodo = (element , info) => {
+        if (element.classList.contains('active')) {
+            element.classList.remove('active');
+            element.style.height = 'auto';
+            element.removeChild(todoText);
+        } else {
+            element.style.height = '20vh';
+            element.classList.add('active');
+            let todoText = document.createElement('p');
+            todoText.textContent = info;
+            todoText.classList.add('todoText');
+            element.appendChild(todoText);
+        }
+    }
+    
+    //Main Todo Display logic
+
 
     let displayTodoList = (e) => {
         informationModule.projectsLibrary.forEach(project => {
             if (project.title === e.target.textContent) {
+
                 emptyDisplay(informationModule.grabElement('displayInfo'));
+
                 for (let i = 0 ; i < project.todoLibrary.length ; i++) {
                     
                     let todoContainer = document.createElement('div');
                     todoContainer.classList.add('todoView');
 
                     let todoHeader = document.createElement('h2');
+                    let todoDate = document.createElement('h2');
 
+                    todoHeader.classList.add('todoHeader');
+                    todoDate.classList.add('todoDate');
+
+                    todoContainer.style.borderLeftColor = assignPriorityColor(project.todoLibrary[i].priority);
+                    
                     todoHeader.textContent = project.todoLibrary[i].toDoTitle;
+                    todoDate.textContent = project.todoLibrary[i].date;
 
                     let imageContainer = document.createElement('div');
                     imageContainer.classList.add('imageContainer');
@@ -77,13 +115,10 @@ let displayModule = (() => {
                     myExpandIcon.src = expandIcon;
                     imageContainer.appendChild(myExpandIcon);
 
+
                     const myEditIcon = new Image();
                     myEditIcon.src = editIcon;
                     imageContainer.appendChild(myEditIcon);
-
-                    myEditIcon.addEventListener('click' , () => {
-                        alert('wow')
-                    })
 
                     const myPriorityIcon = new Image();
                     myPriorityIcon.src = priorityIcon;
@@ -92,8 +127,23 @@ let displayModule = (() => {
                     const myDeleteIcon = new Image();
                     myDeleteIcon.src = deleteIcon;
                     imageContainer.appendChild(myDeleteIcon);
+
+
+                    //Add event listeners to images
+
+                    myExpandIcon.addEventListener('click', () => {
+                        expandTodo(todoContainer , project.todoLibrary[i].description);
+                    });
+
+                    
+                   
+
+                    // myEditIcon.addEventListener('click')
+                    // myPriorityIcon.addEventListener('click')
+                    // myDeleteIcon.addEventListener('click')
                     
                     todoContainer.appendChild(todoHeader);
+                    todoContainer.appendChild(todoDate);
                     todoContainer.appendChild(imageContainer);
                     
                     informationModule.grabElement('displayInfo').appendChild(todoContainer);
