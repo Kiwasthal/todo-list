@@ -4,6 +4,15 @@ const informationModule = (() => {
 
     let projectsLibrary = [];
 
+    let updateLocalStorage = () => {
+        sessionStorage.setItem('mySessionStore', JSON.stringify(projectsLibrary));
+        const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'));
+        console.log(mySessionData);
+    }
+
+    
+    
+
     let grabElement = (item) => {
 
     switch(item) {
@@ -64,6 +73,7 @@ const informationModule = (() => {
     return {
         projectsLibrary,
         grabElement,
+        updateLocalStorage,
     };
 
 })();

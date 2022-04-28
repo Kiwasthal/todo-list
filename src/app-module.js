@@ -11,5 +11,8 @@ const appModule = (() => {
     informationModule.grabElement('barsIcon').addEventListener('click', displayModule.toggleSideNav);
     informationModule.grabElement('dropIcon').addEventListener('click', displayModule.dropIconToggle);
     informationModule.grabElement('today').addEventListener('click', displayModule.createTodayDisplay);
+    window.addEventListener('click' , () => {
+        informationModule.updateLocalStorage();
+    })
     
 })();

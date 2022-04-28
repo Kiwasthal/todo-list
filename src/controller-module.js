@@ -121,6 +121,8 @@ const controllerModule = (() => {
 
     let headerControl = () => {
         displayModule.headerDisplay();
+        displayModule.projectMainDisplay();
+        displayModule.updateProjectsMainDisplay();
         informationModule.grabElement('addProject').addEventListener('click', openProjectModal);
     }
 

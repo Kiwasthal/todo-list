@@ -391,14 +391,17 @@ const displayModule = (() => {
 
 
     return {
+        
         headerDisplay,
         updateProjectsSideNav,
+        projectMainDisplay,
         updateProjectsMainDisplay,
         updateSelectOptions,
         clearToDoModal,
         toggleSideNav,
         dropIconToggle,
-        createTodayDisplay
+        createTodayDisplay,
+       
     }
 
 })();
