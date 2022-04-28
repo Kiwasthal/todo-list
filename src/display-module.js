@@ -180,9 +180,11 @@ let displayModule = (() => {
                 emptyDisplay(informationModule.grabElement('displayInfo'));
 
                 for (let i = 0 ; i < project.todoLibrary.length ; i++) {
+
                     
                     let todoContainer = document.createElement('div');
                     todoContainer.classList.add('todoView');
+                    todoContainer.dataset.index = i
 
                     let todoHeader = document.createElement('h2');
                     let todoDate = document.createElement('h2');
@@ -219,6 +221,14 @@ let displayModule = (() => {
                     imageContainer.appendChild(myDeleteIcon);
 
 
+                    
+                    todoContainer.appendChild(todoHeader);
+                    todoContainer.appendChild(todoDate);
+                    todoContainer.appendChild(imageContainer);
+
+                    informationModule.grabElement('displayInfo').appendChild(todoContainer);
+
+
                     //Add event listeners to images
 
                     myExpandIcon.addEventListener('click', () => {
@@ -245,20 +255,20 @@ let displayModule = (() => {
                     });
 
                     myDeleteIcon.addEventListener('click', () => {
-                        const index = project.todoLibrary.indexOf(project.todoLibrary[i])
-                        project.todoLibrary.splice( index , 1);
-                        displayTodoList();
-
+                        let check = todoContainer.querySelector('.todoHeader').textContent;
                         
-                    })
 
-                    
-                    todoContainer.appendChild(todoHeader);
-                    todoContainer.appendChild(todoDate);
-                    todoContainer.appendChild(imageContainer);
-                    
-                    informationModule.grabElement('displayInfo').appendChild(todoContainer);
-                    
+                            for (let i = 0 ; i < project.todoLibrary.length ; i++ ) {
+                                
+                                if (project.todoLibrary[i].toDoTitle === check ) {
+                                    const index = project.todoLibrary.indexOf(project.todoLibrary[i]);
+                                    project.todoLibrary.splice( index , 1);
+                                    informationModule.grabElement('displayInfo').removeChild(todoContainer);
+                            }
+                        }
+
+                    })
+                                        
                 };
             };
         });
