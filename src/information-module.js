@@ -11,6 +11,8 @@ const informationModule = (() => {
             return document.querySelector('.navbar');
         case 'sideNav':
             return document.querySelector('.sidenav');
+        case 'projectIcon':
+            return document.querySelector('.projectIcon');
         case 'toDoButton':
             return document.querySelector('.addTodo');
         case 'mainContainer':
