@@ -151,7 +151,7 @@ let displayModule = (() => {
 
     }
 
-    let replaceIcon = (container , icon , reference) => {
+    let replaceEditIcon = (container , icon , reference) => {
         container.removeChild(icon)
         const mySaveIcon = new Image();
         mySaveIcon.src = saveIcon;
@@ -163,6 +163,10 @@ let displayModule = (() => {
         let replace = document.querySelector('.saveIcon');
         container.removeChild(replace);
         container.insertBefore(newIcon,reference)
+        
+    }
+
+    let createTodo = () => {
         
     }
     
@@ -209,7 +213,9 @@ let displayModule = (() => {
                     imageContainer.appendChild(myPriorityIcon);
 
                     const myDeleteIcon = new Image();
+                    myDeleteIcon.classList.add('deleteIcon');
                     myDeleteIcon.src = deleteIcon;
+                    myDeleteIcon.dataset.index = project.todoLibrary[i].index
                     imageContainer.appendChild(myDeleteIcon);
 
 
@@ -226,9 +232,10 @@ let displayModule = (() => {
 
                     myEditIcon.addEventListener('click', () => {
                        
-                            replaceIcon(imageContainer , myEditIcon , myPriorityIcon);
+                            replaceEditIcon(imageContainer , myEditIcon , myPriorityIcon);
                             editTodo(todoContainer)
                             document.querySelector('.saveIcon').addEventListener('click', () => {
+
                                 saveTodo(todoContainer, project.todoLibrary[i].toDoTitle , project.todoLibrary[i].date);
                                 replaceSaveIcon(imageContainer , myEditIcon , myPriorityIcon);
                                 project.todoLibrary[i].toDoTitle = todoContainer.querySelector('.todoHeader').textContent;
@@ -237,11 +244,14 @@ let displayModule = (() => {
                            
                     });
 
-                    
-                   
+                    myDeleteIcon.addEventListener('click', () => {
+                        const index = project.todoLibrary.indexOf(project.todoLibrary[i])
+                        project.todoLibrary.splice( index , 1);
+                        displayTodoList();
 
-                    // myEditIcon.addEventListener('click')
-                    // myDeleteIcon.addEventListener('click')
+                        
+                    })
+
                     
                     todoContainer.appendChild(todoHeader);
                     todoContainer.appendChild(todoDate);
@@ -249,10 +259,10 @@ let displayModule = (() => {
                     
                     informationModule.grabElement('displayInfo').appendChild(todoContainer);
                     
-                }
-            }
-        })
-    }
+                };
+            };
+        });
+    };
 
     let updateProjectsSideNav = () => {
         emptyDisplay(informationModule.grabElement('projectsDisplay'));
@@ -282,11 +292,7 @@ let displayModule = (() => {
             temp.classList.add('projectSheet')
             informationModule.grabElement('projectsHolder').appendChild(temp);
         })
-    }
-
-
-
-    
+    }  
 
     return {
         headerDisplay,
