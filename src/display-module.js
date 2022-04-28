@@ -8,7 +8,7 @@ import deleteIcon from "./assets/delete.svg"
 import barsIcon from "./assets/bars.svg"
 import saveIcon from "./assets/save.svg"
 import dropIcon from "./assets/drop.svg"
-import { format, compareAsc } from 'date-fns'
+import { format, compareAsc , isPast } from 'date-fns'
 export { displayModule };
 
 
