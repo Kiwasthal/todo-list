@@ -25,10 +25,12 @@ const displayModule = (() => {
 
     let dropIconToggle = () => {
         if (informationModule.grabElement('dropIcon').classList.contains('rotateDropIcon')){
-            informationModule.grabElement('dropIcon').classList.remove('rotateDropIcon')
+            informationModule.grabElement('dropIcon').classList.remove('rotateDropIcon');
+            document.querySelector('.projectsDisplay').classList.remove('projectsDisplayToggle');
 
         } else {
             informationModule.grabElement('dropIcon').classList.add('rotateDropIcon');
+            document.querySelector('.projectsDisplay').classList.add('projectsDisplayToggle');
         }
     }
 
@@ -290,6 +292,8 @@ const displayModule = (() => {
         });
     };
 
+    //Modify this list
+
     let updateProjectsSideNav = () => {
         emptyDisplay(informationModule.grabElement('projectsDisplay'));
         informationModule.projectsLibrary.forEach(project => {
@@ -297,8 +301,8 @@ const displayModule = (() => {
             temp.addEventListener('click' , displayTodoList )
             temp.textContent = project.title;
             informationModule.grabElement('projectsDisplay').appendChild(temp);
-        })
-    }
+        });
+    };
 
     let updateSelectOptions = () => {
         emptyDisplay(informationModule.grabElement('projectSelect'));

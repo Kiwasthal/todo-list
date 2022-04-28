@@ -50,6 +50,8 @@ const controllerModule = (() => {
         }
     }
 
+    //Work here for display
+
     let finalizeProject = () => {
         createProject();
         displayModule.updateProjectsSideNav();
