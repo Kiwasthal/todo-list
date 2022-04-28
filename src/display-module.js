@@ -12,7 +12,9 @@ export { displayModule };
 
 
 
-let displayModule = (() => {
+const displayModule = (() => {
+
+
 
 
     let emptyDisplay = (element) => {
@@ -20,6 +22,15 @@ let displayModule = (() => {
             element.removeChild(element.lastElementChild)
         };
     };
+
+    let dropIconToggle = () => {
+        if (informationModule.grabElement('dropIcon').classList.contains('rotateDropIcon')){
+            informationModule.grabElement('dropIcon').classList.remove('rotateDropIcon')
+
+        } else {
+            informationModule.grabElement('dropIcon').classList.add('rotateDropIcon');
+        }
+    }
 
     let clearToDoModal = () => {
         informationModule.grabElement('toDoName').value = "";
@@ -59,22 +70,28 @@ let displayModule = (() => {
         }
     }
 
+    
+
     let projectMainDisplay = () => {
         const projectHolder = document.createElement('div');
         projectHolder.classList.add('projectsHolder');
         informationModule.grabElement('displayInfo').appendChild(projectHolder)
+        
     }
 
     let displayProjectButton = () => {
         const addProjectButton = document.createElement('button');
         addProjectButton.classList.add('addProject')
         addProjectButton.textContent = "CREATE PROJECT";
-        informationModule.grabElement('displayInfo').style.display = 'grid'
+        
+        
+        
         informationModule.grabElement('displayInfo').appendChild(addProjectButton);
     };
     
 
     let headerDisplay = () => {
+        informationModule.grabElement('displayInfo').classList.add('displayInfoEmerge');
         emptyDisplay(informationModule.grabElement('displayInfo'));
         displayProjectButton();
         projectMainDisplay();
@@ -166,14 +183,12 @@ let displayModule = (() => {
         
     }
 
-    let createTodo = () => {
-        
-    }
     
     //Main Todo Display logic
 
 
     let displayTodoList = (e) => {
+
         informationModule.projectsLibrary.forEach(project => {
             if (project.title === e.target.textContent) {
 
@@ -243,13 +258,14 @@ let displayModule = (() => {
                     myEditIcon.addEventListener('click', () => {
                        
                             replaceEditIcon(imageContainer , myEditIcon , myPriorityIcon);
-                            editTodo(todoContainer)
+                            editTodo(todoContainer);
                             document.querySelector('.saveIcon').addEventListener('click', () => {
 
                                 saveTodo(todoContainer, project.todoLibrary[i].toDoTitle , project.todoLibrary[i].date);
                                 replaceSaveIcon(imageContainer , myEditIcon , myPriorityIcon);
                                 project.todoLibrary[i].toDoTitle = todoContainer.querySelector('.todoHeader').textContent;
                                 project.todoLibrary[i].date = todoContainer.querySelector('.todoDate').textContent;
+
                             })
                            
                     });
@@ -304,13 +320,16 @@ let displayModule = (() => {
         })
     }  
 
+
+
     return {
         headerDisplay,
         updateProjectsSideNav,
         updateProjectsMainDisplay,
         updateSelectOptions,
         clearToDoModal,
-        toggleSideNav
+        toggleSideNav,
+        dropIconToggle
     }
 
 })();

@@ -40,9 +40,7 @@
   transform: translateX(-30vh);
 }
 
-.reposition {
-  transform: translateX(0);
-}
+
 
 .projectsBar {
     padding: 1vh;
@@ -52,7 +50,6 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1vh;
-    flex-wrap: w;
 }
 
 .projectsBar:hover {
@@ -68,16 +65,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+
 }
 
 .displayInfo {
-    margin-top: 5%;
-    background-color: #ddd;
-    width: 70%;
-    height: auto;
-    border-radius: 2%;
-    display: none;
-    padding: 2vw;
+    transform: translateX(50vh) translateY(50vh);
+    
+}
+
+.displayInfoEmerge {
+  transform: translateX(10vh) translateY(0);
+  padding: 2vw;
+  transition: 600ms;
+  margin-top: 5%;
+  background-color: #ddd;
+  width: 70%;
+  height: auto;
+  border-radius: 2%;
 }
 
 .addProject {
@@ -130,6 +135,12 @@ img:hover:not(.barsIcon):not(.dropIcon) {
 
 .dropIcon {
   height: 2.5vh;
+  transform: rotate(-90deg);
+  transition: 500ms;
+}
+
+.rotateDropIcon {
+  transform: rotate(0deg);
 }
 
 .projectHeader {

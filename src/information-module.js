@@ -53,6 +53,8 @@ const informationModule = (() => {
             return document.querySelector('.prioritySelect');
         case 'barsIcon':
             return document.querySelector('.barsIcon');
+        case 'dropIcon':
+            return document.querySelector('.dropIcon');
     }};
 
     return {
