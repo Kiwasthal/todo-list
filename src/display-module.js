@@ -8,7 +8,7 @@ import deleteIcon from "./assets/delete.svg"
 import barsIcon from "./assets/bars.svg"
 import saveIcon from "./assets/save.svg"
 import dropIcon from "./assets/drop.svg"
-import { format, compareAsc , isPast } from 'date-fns'
+import { format, isSameDay, parseISO } from 'date-fns'
 export { displayModule };
 
 
@@ -100,7 +100,68 @@ const displayModule = (() => {
         projectMainDisplay();
     };
 
-    //To do creation Funtion
+
+    let createTodayDisplay = () => {
+        emptyDisplay(informationModule.grabElement('displayInfo'));
+        for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
+            for (let y = 0 ; y < informationModule.projectsLibrary[i].todoLibrary.length ; y++) {
+
+                
+                
+                    if (isSameDay(parseISO(informationModule.projectsLibrary[i].todoLibrary[y].date), new Date () )) {
+
+                    let todoContainer = document.createElement('div');
+                    todoContainer.classList.add('todoView');
+                    todoContainer.dataset.index = i
+
+                    let todoHeader = document.createElement('h2');
+                    let todoDate = document.createElement('h2');
+
+                    todoHeader.classList.add('todoHeader');
+                    todoDate.classList.add('todoDate');
+
+                    todoContainer.style.borderLeftColor = assignPriorityColor(informationModule.projectsLibrary[i].todoLibrary[y].priority);
+                    
+                    todoHeader.textContent = informationModule.projectsLibrary[i].todoLibrary[y].toDoTitle;
+                    todoDate.textContent = format(new Date(informationModule.projectsLibrary[i].todoLibrary[y].date), 'MM/dd/yyyy');
+
+                    let imageContainer = document.createElement('div');
+                    imageContainer.classList.add('imageContainer');
+
+                    const myExpandIcon = new Image();
+                    myExpandIcon.src = expandIcon;
+                    imageContainer.appendChild(myExpandIcon);
+
+
+                    const myEditIcon = new Image();
+                    myEditIcon.src = editIcon;
+                    myEditIcon.classList.add('editIcon');
+                    imageContainer.appendChild(myEditIcon);
+
+                    const myPriorityIcon = new Image();
+                    myPriorityIcon.src = priorityIcon;
+                    imageContainer.appendChild(myPriorityIcon);
+
+                    const myDeleteIcon = new Image();
+                    myDeleteIcon.classList.add('deleteIcon');
+                    myDeleteIcon.src = deleteIcon;
+                    myDeleteIcon.dataset.index = informationModule.projectsLibrary[i].todoLibrary[y].index
+                    imageContainer.appendChild(myDeleteIcon);
+
+
+                    
+                    todoContainer.appendChild(todoHeader);
+                    todoContainer.appendChild(todoDate);
+                    todoContainer.appendChild(imageContainer);
+
+                    informationModule.grabElement('displayInfo').appendChild(todoContainer);
+                        
+                    }
+                    
+                
+            }
+        }
+    }
 
     
 
@@ -187,7 +248,9 @@ const displayModule = (() => {
     }
 
     
-    //Main Todo Display logic
+    //Main Todo Display logic;
+
+
 
 
     let displayTodoList = (e) => {
@@ -334,7 +397,8 @@ const displayModule = (() => {
         updateSelectOptions,
         clearToDoModal,
         toggleSideNav,
-        dropIconToggle
+        dropIconToggle,
+        createTodayDisplay
     }
 
 })();

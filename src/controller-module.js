@@ -26,7 +26,7 @@ const controllerModule = (() => {
 
     //Module
     
-    let confirmation = true
+    let confirmation = true;
 
 
     let createProject = () => {
@@ -41,6 +41,7 @@ const controllerModule = (() => {
     };
 
     let createToDo = () => {
+        
 
         confirmation = true;
 
@@ -83,15 +84,14 @@ const controllerModule = (() => {
         }
 
         if (confirmation) {
-        for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
-            if (informationModule.projectsLibrary[i].title === informationModule.grabElement('projectSelect').value) {
-               informationModule.projectsLibrary[i].insertTodo(todo);
-               confirmation = true ;
-            }
-
-            }
-        }
-    }
+            for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
+                if (informationModule.projectsLibrary[i].title === informationModule.grabElement('projectSelect').value) {
+                    informationModule.projectsLibrary[i].insertTodo(todo);
+                    confirmation = true ;
+                };
+            };
+        };
+    };
 
     //Work here for display
 

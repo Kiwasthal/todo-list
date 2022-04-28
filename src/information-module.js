@@ -57,6 +57,8 @@ const informationModule = (() => {
             return document.querySelector('.barsIcon');
         case 'dropIcon':
             return document.querySelector('.dropIcon');
+        case 'today':
+            return document.querySelector('.today');
     }};
 
     return {

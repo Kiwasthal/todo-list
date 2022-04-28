@@ -547,4 +547,13 @@ input {
   justify-self: flex-end;
 }
 
+.today {
+  justify-self: center;
+  padding: 2vh;
+  font-size: 1.55rem;
+  color: #ddd ;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px black;
+}
+
 
