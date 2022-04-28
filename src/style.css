@@ -158,8 +158,9 @@ img:hover:not(.barsIcon):not(.dropIcon) {
   transform: translateY(-30vh);
   z-index: 999;
   display: grid;
-  grid-auto-rows: 3vh;
-  justify-items: center;
+  grid-auto-rows: 3.5vh;
+  justify-items: flex-start;
+  gap: 1vh;
 }
 
 .projectsDisplayToggle {
@@ -180,6 +181,9 @@ li {
     color: #ddd;
     font-size: 1.25rem;
     text-shadow: 0.7px 1px 1px black;
+    padding: 0.7vh;
+    text-align: center;
+    align-self: center;
 }
 
 li:hover {
@@ -524,6 +528,16 @@ dialog[open] {
     to {
         transform: translateY(0%);
     }
+}
+
+input {
+  height: 5vh;
+  max-width: 10vw;
+  align-self: flex-start;
+}
+
+.newDate {
+  justify-self: flex-end;
 }
 
 

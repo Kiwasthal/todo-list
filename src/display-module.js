@@ -8,6 +8,7 @@ import deleteIcon from "./assets/delete.svg"
 import barsIcon from "./assets/bars.svg"
 import saveIcon from "./assets/save.svg"
 import dropIcon from "./assets/drop.svg"
+import { format, compareAsc } from 'date-fns'
 export { displayModule };
 
 
@@ -161,7 +162,7 @@ const displayModule = (() => {
 
         todoHeader.textContent = grabHeader.value;
         
-        todoDate.textContent = grabDate.value;
+        todoDate.textContent =  format(new Date(grabDate.value), 'MM/dd/yyyy');;
         
         container.removeChild(grabHeader);
         container.removeChild(grabDate);
@@ -212,7 +213,7 @@ const displayModule = (() => {
                     todoContainer.style.borderLeftColor = assignPriorityColor(project.todoLibrary[i].priority);
                     
                     todoHeader.textContent = project.todoLibrary[i].toDoTitle;
-                    todoDate.textContent = project.todoLibrary[i].date;
+                    todoDate.textContent = format(new Date(project.todoLibrary[i].date), 'MM/dd/yyyy');
 
                     let imageContainer = document.createElement('div');
                     imageContainer.classList.add('imageContainer');
