@@ -4,6 +4,8 @@ const informationModule = (() => {
 
     let projectsLibrary = [];
 
+    //Working on storage//
+
     let updateLocalStorage = () => {
         sessionStorage.setItem('mySessionStore', JSON.stringify(projectsLibrary));
         const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'));
