@@ -78,7 +78,8 @@ const displayModule = (() => {
     let projectMainDisplay = () => {
         const projectHolder = document.createElement('div');
         projectHolder.classList.add('projectsHolder');
-        informationModule.grabElement('displayInfo').appendChild(projectHolder)
+        informationModule.grabElement('displayInfo').appendChild(projectHolder);
+        resetAnimation();
         
     }
 
@@ -102,6 +103,8 @@ const displayModule = (() => {
 
 
     let createTodayDisplay = () => {
+        resetAnimation();
+
         emptyDisplay(informationModule.grabElement('displayInfo'));
         for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
             for (let y = 0 ; y < informationModule.projectsLibrary[i].todoLibrary.length ; y++) {
@@ -248,17 +251,26 @@ const displayModule = (() => {
     }
 
     
+    
+    let resetAnimation = () => {
+        informationModule.grabElement('displayInfo').classList.remove('displayInfoEmerge');
+        setTimeout(() => {
+            informationModule.grabElement('displayInfo').classList.add('displayInfoEmerge');
+        }, 1)
+    }
+
     //Main Todo Display logic;
 
 
-
-
     let displayTodoList = (e) => {
+
+        resetAnimation();
 
         informationModule.projectsLibrary.forEach(project => {
             if (project.title === e.target.textContent) {
 
                 emptyDisplay(informationModule.grabElement('displayInfo'));
+                
 
                 for (let i = 0 ; i < project.todoLibrary.length ; i++) {
 
@@ -391,7 +403,7 @@ const displayModule = (() => {
 
 
     return {
-        
+
         headerDisplay,
         updateProjectsSideNav,
         projectMainDisplay,
