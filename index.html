@@ -1,101 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo-List</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <script src="main.js" defer></script>
 
     <div id="appContainer">
-        <div class="navbar">
-            
-        </div>
-        <div class="sidenav">
-                <div class="today">Today</div>
-               
+      <div class="navbar"></div>
+      <div class="sidenav">
+        <div class="today">Today</div>
 
-                <div class="projectsBar">
-                    <h2 class="projectHeader">Projects</h2>
-                </div>
-                <div class="wrapper"></div>
-
-            
-            <div class="projectsDisplay">
-                
-            </div>
+        <div class="projectsBar">
+          <h2 class="projectHeader">Projects</h2>
         </div>
-        <div class="mainContainer">
-            <div class="displayInfo">
+        <div class="wrapper"></div>
 
-            </div>
-        </div>
-        <footer class="footer"><a class="githublink" href="https://github.com/Kiwasthal/todo-list"><img src="./b039b2d83982c8256af3.png" class="mark" ></a>Kiwasthal 2022</footer>
+        <div class="projectsDisplay"></div>
+      </div>
+      <div class="mainContainer">
+        <div class="displayInfo"></div>
+      </div>
+      <footer class="footer">
+        <a class="githublink" href="https://github.com/Kiwasthal/todo-list"
+          ><img src="./b039b2d83982c8256af3.png" class="mark" /></a
+        >Kiwasthal 2022
+      </footer>
     </div>
 
-
-
     <dialog class="modal" id="modal">
-        <label for="projectName" class="field field_v2">
-            <input class="field__input" type="text" name="projectName" id="projectName" placeholder="e.g.Title">
-            <span class="field__label-wrap">
-                <span class="field__label">Project Name</span>
-            </span>
-        </label>
-        
-        <button class="createProject">Create</button>
-        <button class="closeModal">Close</button>
+      <label for="projectName" class="field field_v2">
+        <input
+          class="field__input"
+          type="text"
+          name="projectName"
+          id="projectName"
+          placeholder="e.g.Title"
+        />
+        <span class="field__label-wrap">
+          <span class="field__label">Project Name</span>
+        </span>
+      </label>
 
+      <button class="createProject">Create</button>
+      <button class="closeModal">Close</button>
     </dialog>
-
-
-
 
     <dialog class="toDoModal" id="modal">
-        <div class="todoContainer">
-            <label for="toDoName" class="field field_v2">
-                <input class="field__input" type="text" name="toDoName" id="toDoName" placeholder="e.g.Title">
-                <span class="field__label-wrap">
-                    <span class="field__label">ToDo Name</span>
-                </span>
-            </label>
-            <label for="toDoDate" class="field field_v2">
-                <input class="field__input" type="date" name="toDoDate" id="toDoDate" placeholder="e.g.Title">
-                <span class="field__label-wrap">
-                    <span class="field__label">Due Date</span>
-                </span>
-            </label>
+      <div class="todoContainer">
+        <label for="toDoName" class="field field_v2">
+          <input
+            class="field__input"
+            type="text"
+            name="toDoName"
+            id="toDoName"
+            placeholder="e.g.Title"
+          />
+          <span class="field__label-wrap">
+            <span class="field__label">ToDo Name</span>
+          </span>
+        </label>
+        <label for="toDoDate" class="field field_v2">
+          <input
+            class="field__input"
+            type="date"
+            name="toDoDate"
+            id="toDoDate"
+            placeholder="e.g.Title"
+          />
+          <span class="field__label-wrap">
+            <span class="field__label">Due Date</span>
+          </span>
+        </label>
 
-            <div class="firstBox">
-                <select class="projectSelect">
-                </select>
-            </div>
-
-            <div class="secondBox">
-                <select class="prioritySelect">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-            </div>
-
-            <textarea class="todoText" rows="4" cols="66" name="comment" form="usrform" placeholder="Enter Text Here..." style="resize: none;" maxlength="250" ></textarea>
-
-            <div class="titlesContainer">
-                <h3>Set to Project</h3>
-                <h3>Set Priority</h3>
-            </div>
-
-            <button class="closeToDo">Close</button>
-            <button class="createToDo">Create</button>
-
+        <div class="firstBox">
+          <select class="projectSelect"></select>
         </div>
-   
 
+        <div class="secondBox">
+          <select class="prioritySelect">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+
+        <textarea
+          class="todoText"
+          rows="4"
+          cols="66"
+          name="comment"
+          form="usrform"
+          placeholder="Enter Text Here..."
+          style="resize: none"
+          maxlength="250"
+        ></textarea>
+
+        <div class="titlesContainer">
+          <h3>Set to Project</h3>
+          <h3>Set Priority</h3>
+        </div>
+
+        <button class="closeToDo">Close</button>
+        <button class="createToDo">Create</button>
+      </div>
     </dialog>
-    
-</body>
+  </body>
 </html>
