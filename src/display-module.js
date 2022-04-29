@@ -412,7 +412,7 @@ const displayModule = (() => {
 
             const deleteProject = new Image();
             deleteProject.src = deleteIcon;
-            deleteProject.classList.add(`${temp.textContent}`);
+            deleteProject.classList.add(`${temp.textContent.replace(/\s/g, "")}`);
             temp.appendChild(deleteProject);
 
             deleteProject.addEventListener('click' , (e) =>{
@@ -422,7 +422,7 @@ const displayModule = (() => {
                 
                 for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
                    
-                    if (informationModule.projectsLibrary[i].title === check) {
+                    if (informationModule.projectsLibrary[i].title.replace(/\s/g, "") === check) {
                         
                         const index =  informationModule.projectsLibrary.indexOf(informationModule.projectsLibrary[i])
                         informationModule.projectsLibrary.splice( index , 1);

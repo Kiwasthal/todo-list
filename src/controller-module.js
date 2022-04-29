@@ -34,7 +34,6 @@ const controllerModule = (() => {
     let updateLocalStorage = () => {
         localStorage.setItem('mylocalStore', JSON.stringify(informationModule.projectsLibrary));
         const mylocalData = JSON.parse(localStorage.getItem('mylocalStore'));
-        console.log(mylocalData);
     }
 
 

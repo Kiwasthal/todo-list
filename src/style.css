@@ -268,9 +268,14 @@ li:hover {
 .projectSheet {
     padding-top: 2vh;
     border-bottom: 2px solid #3b82f6;
+    position : relative;
     display: flex;
     justify-content: center;
     gap: 93%;
+}
+
+.projectSheet img {
+  align-self: flex-end;
 }
 
 .deleteProject {
