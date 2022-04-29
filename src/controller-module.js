@@ -124,6 +124,7 @@ const controllerModule = (() => {
         createProject();
         displayModule.updateProjectsSideNav();
         displayModule.updateProjectsMainDisplay();
+        informationModule.grabElement('modal').style.display = '';
     }
 
     let finalizeTodo = () => {
@@ -137,7 +138,9 @@ const controllerModule = (() => {
 
     let openProjectModal = () => {
        informationModule.grabElement('modal').showModal();
+       informationModule.grabElement('modal').style.display = 'grid';
        informationModule.grabElement('closeModal').addEventListener('click' , () => {
+        informationModule.grabElement('modal').style.display = '';
             informationModule.grabElement('modal').close();  
        })
        informationModule.grabElement('createProject').addEventListener('click', finalizeProject)

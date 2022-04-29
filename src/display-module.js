@@ -8,6 +8,7 @@ import deleteIcon from "./assets/delete.svg"
 import barsIcon from "./assets/bars.svg"
 import saveIcon from "./assets/save.svg"
 import dropIcon from "./assets/drop.svg"
+import quillIcon from "./assets/quill-pen.png"
 import { format, isSameDay, parseISO } from 'date-fns'
 export { displayModule };
 

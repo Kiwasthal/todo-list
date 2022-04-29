@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('./assets/VujahdayScript-Regular.ttf') format('woff2'),
+  url('./assets/Romanesco-Regular.ttf') format('ttf');
+  font-weight: 100;
+  font-style: normal;
+}
 
 :root {
+  font-family: 'MyFont';
   --side-bg-color : #376fc3;
   --hover-projects : #a9d4f0;
   --font-main-color : #ddd;
@@ -107,19 +115,53 @@
 }
 
 .addProject {
+    background-image: url('./assets/quill-pen.png');
+    background-position: 10px;
+    background-size: 4vh;
+    background-repeat: no-repeat;
     width: 20%;
+    font-weight: 800;
     align-self: center;
     justify-self: flex-end;
     margin: 1vh;
-    color:var(--font-main-color);
+    color:black;
     border-radius: 20px;
     transition: transform 200ms;
     background-color: #0284c7;
+    text-align: center;
+    line-height: 3vh;
+    width: 23%;
+    height: 40%;
+    padding: 1vh;
+    transition: 200ms;
+    font-size: 1.25rem;
+    font-weight: 1000;
+}
+
+.addProject:hover {
+  transform: scale(1.07);
 }
 
 .addTodo {
   grid-area: 4 / 1 / 5 / 2;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.25rem;
+  padding: 1.5vh;
+  text-align: center;
+  line-height: 1vh;
+  width: 80%;
+  height: 50%;
+  background-color: #ddd;
+  border-radius: 20px;
+  border-top: 2px solid black;
+  transition: 200ms;
 }
+
+.addTodo:hover {
+  transform: scale(1.05);
+}
+
 
 
 
@@ -189,6 +231,7 @@ img:hover:not(.barsIcon):not(.dropIcon) {
     margin: 0px;
     align-self: center;
     text-shadow: 1px 1px 1px black;
+    font-size: x-large;
 }
 
 li {
@@ -477,10 +520,32 @@ li:hover {
 
   .createToDo {
       grid-area: 3 / 1 / 4 / 2;
+      justify-self: flex-start;
+      align-self: center;
+      background-color: #0563af;
+      font-size: 1.20rem;
+      color: #ddd;
+      width: 40%;
+      border-radius: 20px;
+      height: 60%;
+      transition: 200ms;
   }
 
   .closeToDo {
       grid-area: 3 / 2 / 4 / 3;
+      justify-self: flex-start;
+      background-color: #383a3e;
+      color: #ddd;
+      font-size: 1.20rem;
+      align-self: center;
+      width: 40%;
+      border-radius: 20px;
+      height: 60%;
+      transition: 200ms;
+  }
+
+  .closeToDo:hover , .createToDo:hover {
+    transform: scale(1.05);
   }
 
   
@@ -567,9 +632,7 @@ input {
   font-weight: 600;
   text-shadow: 1px 1px 1px black;
   z-index: 1002;
-  justify-self: center;
   align-self: center;
-  /* text-align: center; */
   height: 3vh;
 }
 
