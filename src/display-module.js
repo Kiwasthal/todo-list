@@ -42,6 +42,10 @@ const displayModule = (() => {
         informationModule.grabElement('toDoText').value = "";
         informationModule.grabElement('prioritySelect').value = "";  
     }
+
+    let clearProjectModal = () => {
+        informationModule.grabElement('projectName').value = "";
+    }
      
 
     const myBarsIcon = new Image();
@@ -415,6 +419,7 @@ const displayModule = (() => {
         dropIconToggle,
         createTodayDisplay,
         resetAnimation, 
+        clearProjectModal,
        
     }
 

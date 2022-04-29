@@ -53,15 +53,31 @@ const controllerModule = (() => {
 
 
     let createProject = () => {
+        confirmation = true;
+
         if (informationModule.grabElement('projectName').value === "" ) 
             return alert('Please insert a name for the project')
 
         let temp = informationModule.grabElement('projectName').value;
+
+        for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
+
+            if (informationModule.projectsLibrary[i].title === temp ) {
+                alert ('Your projects should have different names');
+                confirmation = false;
+                return
+            }
+        }
+
+        if (confirmation) {
+
         let project = projectFactory(temp);
         addToProjectsLibary(project);  
         project.insertTodo = pushTodoToLibrary.addtoLibrary
         informationModule.grabElement('modal').close();
         updateLocalStorage();
+
+        }
     };
 
     let createToDo = () => {
@@ -92,6 +108,8 @@ const controllerModule = (() => {
             return;
             
         };
+
+        
 
         
         let todo = todoFactory(todoTitle , todoDate , todoText , todoPriority );
@@ -140,8 +158,11 @@ const controllerModule = (() => {
        informationModule.grabElement('modal').showModal();
        informationModule.grabElement('modal').style.display = 'grid';
        informationModule.grabElement('closeModal').addEventListener('click' , () => {
+        
         informationModule.grabElement('modal').style.display = '';
-            informationModule.grabElement('modal').close();  
+        informationModule.grabElement('modal').close();
+        displayModule.clearProjectModal();  
+        
        })
        informationModule.grabElement('createProject').addEventListener('click', finalizeProject)
     }
@@ -160,7 +181,10 @@ const controllerModule = (() => {
         informationModule.grabElement('toDoModal').showModal();
         displayModule.updateSelectOptions();
         informationModule.grabElement('closeToDo').addEventListener('click', () => {
+
+            displayModule.clearToDoModal();
             informationModule.grabElement('toDoModal').close();
+
         });
         informationModule.grabElement('createToDo').addEventListener('click' , finalizeTodo)
     }
