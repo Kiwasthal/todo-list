@@ -24,12 +24,20 @@
 
 .navbar {
     grid-area: 1 / 1 / 2 / 3;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: 1vh;
     align-items: center;
-    justify-items: space-around;
+    justify-items: center;
     z-index: 1000;
+    gap: 3vw;
     background-color: var(--modal-color);
+}
+
+.projectTitle {
+  color:  #ddd;
+  justify-self: center;
+  margin-right: 5vw;
 }
 
 .barsIcon {
@@ -295,6 +303,8 @@ li:hover {
   border-radius: 20px;
   transition: 200ms;
 }
+
+
 
 
 .modal::backdrop {
@@ -666,5 +676,10 @@ input {
   border-radius: 20px;
   background-color: var(--hover-projects);
 }
+
+.mark {
+  height: 3.2vh;
+}
+
 
 

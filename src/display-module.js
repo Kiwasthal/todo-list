@@ -1,5 +1,6 @@
 import { controllerModule } from "./controller-module";
 import { informationModule } from "./information-module";
+import markIcon from "./assets/mark.png"
 import projectIcon  from "./assets/projects.png";
 import expandIcon from "./assets/expand.svg";
 import editIcon from "./assets/edit.svg";
@@ -52,6 +53,11 @@ const displayModule = (() => {
     myBarsIcon.src = barsIcon;
     myBarsIcon.classList.add('barsIcon');
     informationModule.grabElement('navbar').appendChild(myBarsIcon);
+
+    const projectTitle = document.createElement('h1');
+    projectTitle.textContent = 'Organize Your Todo\'s '
+    projectTitle.classList.add('projectTitle');
+    informationModule.grabElement('navbar').appendChild(projectTitle);
     
 
 
@@ -363,6 +369,7 @@ const displayModule = (() => {
                                     const index = project.todoLibrary.indexOf(project.todoLibrary[i]);
                                     project.todoLibrary.splice( index , 1);
                                     informationModule.grabElement('displayInfo').removeChild(todoContainer);
+                                    controllerModule.updateLocalStorage();
                             }
                         }
 
