@@ -1,18 +1,13 @@
-export {informationModule};
+
+export { informationModule };
+
 
 const informationModule = (() => {
 
-    let projectsLibrary = [];
-
-    //Working on storage//
-
-    let updateLocalStorage = () => {
-        sessionStorage.setItem('mySessionStore', JSON.stringify(projectsLibrary));
-        const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'));
-        console.log(mySessionData);
-    }
-
     
+
+
+    let projectsLibrary = [];   
     
 
     let grabElement = (item) => {
@@ -75,7 +70,6 @@ const informationModule = (() => {
     return {
         projectsLibrary,
         grabElement,
-        updateLocalStorage,
     };
 
 })();

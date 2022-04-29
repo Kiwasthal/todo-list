@@ -413,6 +413,7 @@ const displayModule = (() => {
         toggleSideNav,
         dropIconToggle,
         createTodayDisplay,
+        resetAnimation, 
        
     }
 

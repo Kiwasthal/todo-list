@@ -178,7 +178,7 @@ img:hover:not(.barsIcon):not(.dropIcon) {
 }
 
 .projectsDisplayToggle {
-  transform: translateY(-30vh);
+  transform: translateY(-60vh);
   z-index: 999;
 }
 

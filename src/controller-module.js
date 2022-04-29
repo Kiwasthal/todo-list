@@ -9,8 +9,35 @@ export{ controllerModule };
 
 const controllerModule = (() => {
 
+    let pushTodoToLibrary = {
+        addtoLibrary(todo){
+            this.todoLibrary.push(todo);
+        }
+    }
+
+
+    if (localStorage.getItem("mylocalStore") === null) {
+
+    } else {
+        informationModule.projectsLibrary = JSON.parse(localStorage.getItem('mylocalStore'));
+        informationModule.projectsLibrary.forEach(project => {
+            project.insertTodo =  pushTodoToLibrary.addtoLibrary;
+        })
+        displayModule.updateProjectsSideNav();
+    }
 
     
+
+    
+    
+
+    let updateLocalStorage = () => {
+        localStorage.setItem('mylocalStore', JSON.stringify(informationModule.projectsLibrary));
+        const mylocalData = JSON.parse(localStorage.getItem('mylocalStore'));
+        console.log(mylocalData);
+    }
+
+
 
     let addToProjectsLibary = (project) => {
         informationModule.projectsLibrary.push(project);
@@ -18,11 +45,7 @@ const controllerModule = (() => {
     
     //Project Methods
 
-    let pushTodoToLibrary = {
-        addtoLibrary(todo){
-            this.todoLibrary.push(todo);
-        }
-    }
+    
 
     //Module
     
@@ -38,6 +61,7 @@ const controllerModule = (() => {
         addToProjectsLibary(project);  
         project.insertTodo = pushTodoToLibrary.addtoLibrary
         informationModule.grabElement('modal').close();
+        updateLocalStorage();
     };
 
     let createToDo = () => {
@@ -87,6 +111,7 @@ const controllerModule = (() => {
             for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
                 if (informationModule.projectsLibrary[i].title === informationModule.grabElement('projectSelect').value) {
                     informationModule.projectsLibrary[i].insertTodo(todo);
+                    updateLocalStorage();
                     confirmation = true ;
                 };
             };
@@ -124,6 +149,7 @@ const controllerModule = (() => {
         displayModule.headerDisplay();
         displayModule.projectMainDisplay();
         displayModule.updateProjectsMainDisplay();
+        displayModule.resetAnimation();
         informationModule.grabElement('addProject').addEventListener('click', openProjectModal);
     }
 
