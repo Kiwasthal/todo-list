@@ -400,8 +400,32 @@ const displayModule = (() => {
         informationModule.projectsLibrary.forEach(project => {
             let temp = document.createElement('div');
             temp.textContent = project.title;
-            temp.classList.add('projectSheet')
+            temp.classList.add('projectSheet');
             informationModule.grabElement('projectsHolder').appendChild(temp);
+
+            const deleteProject = new Image();
+            deleteProject.src = deleteIcon;
+            deleteProject.classList.add(`${temp.textContent}`);
+            temp.appendChild(deleteProject);
+
+            deleteProject.addEventListener('click' , (e) =>{
+
+                let check = e.target.classList.value
+                
+                
+                for (let i = 0 ; i < informationModule.projectsLibrary.length ; i++) {
+                   
+                    if (informationModule.projectsLibrary[i].title === check) {
+                        
+                        const index =  informationModule.projectsLibrary.indexOf(informationModule.projectsLibrary[i])
+                        informationModule.projectsLibrary.splice( index , 1);
+                        
+                    }
+                }
+                informationModule.grabElement('projectsHolder').removeChild(temp);
+                updateProjectsSideNav();
+                controllerModule.updateLocalStorage();
+            })
         })
     }  
 

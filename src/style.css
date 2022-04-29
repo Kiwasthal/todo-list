@@ -260,6 +260,13 @@ li:hover {
 .projectSheet {
     padding-top: 2vh;
     border-bottom: 2px solid #3b82f6;
+    display: flex;
+    justify-content: center;
+    gap: 93%;
+}
+
+.deleteProject {
+  align-self: flex-end;
 }
 
 .modal {

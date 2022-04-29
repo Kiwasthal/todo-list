@@ -53,6 +53,7 @@ const controllerModule = (() => {
 
 
     let createProject = () => {
+
         confirmation = true;
 
         if (informationModule.grabElement('projectName').value === "" ) 
@@ -75,6 +76,8 @@ const controllerModule = (() => {
         addToProjectsLibary(project);  
         project.insertTodo = pushTodoToLibrary.addtoLibrary
         informationModule.grabElement('modal').close();
+        informationModule.grabElement('modal').style.display = '';
+        displayModule.clearProjectModal();
         updateLocalStorage();
 
         }
@@ -142,7 +145,7 @@ const controllerModule = (() => {
         createProject();
         displayModule.updateProjectsSideNav();
         displayModule.updateProjectsMainDisplay();
-        informationModule.grabElement('modal').style.display = '';
+        
     }
 
     let finalizeTodo = () => {
@@ -195,6 +198,7 @@ const controllerModule = (() => {
         createProject,
         headerControl,
         toDoControl,
+        updateLocalStorage
     }
 
 })();
