@@ -6,5 +6,5 @@ This project is created with the intent of showcasing the ability to work with s
 
 Here is the <a href="https://kiwasthal.github.io/todo-list/"> project's demo </a>.
 
-As a side note, the project was build with a purpose of incorporating some of the OOP principles, however , taking a look at the overall result , many compositional changes could be made to improve readability and code repetition. Some of the functionality is stored in modules compromising the sole responsibility principle , perhaps a future-build should incorporating more modules along the lines of SOLID stereotypes.
+As a side note, the project was build with a purpose of incorporating some of the OOP principles, however , taking a look at the overall result , many compositional changes could be made to improve readability and code repetition. Some of the functionality is stored in modules compromising the sole responsibility principle , perhaps a future-build should incorporate added modules along the lines of SOLID stereotypes.
 
