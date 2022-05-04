@@ -332,9 +332,14 @@ const displayModule = (() => {
                 replaceSaveIcon(imageContainer, myEditIcon, myPriorityIcon);
                 project.todoLibrary[i].toDoTitle =
                   todoContainer.querySelector('.todoHeader').textContent;
-                project.todoLibrary[i].date =
-                  todoContainer.querySelector('.todoDate').textContent;
-                updateLocalStorage();
+
+                project.todoLibrary[i].date = format(
+                  new Date(
+                    todoContainer.querySelector('.todoDate').textContent
+                  ),
+                  'yyyy-MM-dd'
+                );
+                controllerModule.updateLocalStorage();
               });
           });
 
