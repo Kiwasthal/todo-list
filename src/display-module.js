@@ -334,6 +334,7 @@ const displayModule = (() => {
                   todoContainer.querySelector('.todoHeader').textContent;
                 project.todoLibrary[i].date =
                   todoContainer.querySelector('.todoDate').textContent;
+                updateLocalStorage();
               });
           });
 
