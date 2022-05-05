@@ -1,71 +1,71 @@
-export { informationModule };
+export { informationModule }
 
 const informationModule = (() => {
-  //Main Library;
+  // Main Library;
 
-  let projectsLibrary = [];
+  const projectsLibrary = []
 
-  //The worst idea I ever had;//At least i could convert argument with some kind of ${} convention but i had to be silly.
+  // The worst idea I ever had;//At least i could convert argument with some kind of ${} convention but i had to be silly.
 
-  let grabElement = (item) => {
+  const grabElement = (item) => {
     switch (item) {
       case 'navbar':
-        return document.querySelector('.navbar');
+        return document.querySelector('.navbar')
       case 'sideNav':
-        return document.querySelector('.sidenav');
+        return document.querySelector('.sidenav')
       case 'projectIcon':
-        return document.querySelector('.projectIcon');
+        return document.querySelector('.projectIcon')
       case 'toDoButton':
-        return document.querySelector('.addTodo');
+        return document.querySelector('.addTodo')
       case 'mainContainer':
-        return document.querySelector('.mainContainer');
+        return document.querySelector('.mainContainer')
       case 'projectHeader':
-        return document.querySelector('.projectHeader');
+        return document.querySelector('.projectHeader')
       case 'projectsBar':
-        return document.querySelector('.projectsBar');
+        return document.querySelector('.projectsBar')
       case 'addProject':
-        return document.querySelector('.addProject');
+        return document.querySelector('.addProject')
       case 'displayInfo':
-        return document.querySelector('.displayInfo');
+        return document.querySelector('.displayInfo')
       case 'projectsDisplay':
-        return document.querySelector('.projectsDisplay');
+        return document.querySelector('.projectsDisplay')
       case 'modal':
-        return document.querySelector('.modal');
+        return document.querySelector('.modal')
       case 'closeModal':
-        return document.querySelector('.closeModal');
+        return document.querySelector('.closeModal')
       case 'createProject':
-        return document.querySelector('.createProject');
+        return document.querySelector('.createProject')
       case 'projectName':
-        return document.querySelector('#projectName');
+        return document.querySelector('#projectName')
       case 'toDoName':
-        return document.querySelector('#toDoName');
+        return document.querySelector('#toDoName')
       case 'toDoDate':
-        return document.querySelector('#toDoDate');
+        return document.querySelector('#toDoDate')
       case 'toDoText':
-        return document.querySelector('.todoText');
+        return document.querySelector('.todoText')
       case 'projectsHolder':
-        return document.querySelector('.projectsHolder');
+        return document.querySelector('.projectsHolder')
       case 'toDoModal':
-        return document.querySelector('.toDoModal');
+        return document.querySelector('.toDoModal')
       case 'projectSelect':
-        return document.querySelector('.projectSelect');
+        return document.querySelector('.projectSelect')
       case 'closeToDo':
-        return document.querySelector('.closeToDo');
+        return document.querySelector('.closeToDo')
       case 'createToDo':
-        return document.querySelector('.createToDo');
+        return document.querySelector('.createToDo')
       case 'prioritySelect':
-        return document.querySelector('.prioritySelect');
+        return document.querySelector('.prioritySelect')
       case 'barsIcon':
-        return document.querySelector('.barsIcon');
+        return document.querySelector('.barsIcon')
       case 'dropIcon':
-        return document.querySelector('.dropIcon');
+        return document.querySelector('.dropIcon')
       case 'today':
-        return document.querySelector('.today');
+        return document.querySelector('.today')
     }
-  };
+  }
 
   return {
     projectsLibrary,
-    grabElement,
-  };
-})();
+    grabElement
+  }
+})()

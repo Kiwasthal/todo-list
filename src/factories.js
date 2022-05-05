@@ -6,8 +6,8 @@ const todoFactory = (toDoTitle, date, description, priority) => {
 };
 
 const projectFactory = (projectTitle) => {
-  let title = projectTitle;
-  let todoLibrary = [];
+  const title = projectTitle;
+  const todoLibrary = [];
 
   return { todoLibrary, title };
 };

@@ -14,7 +14,7 @@ import { format, isSameDay, parseISO } from 'date-fns';
 export { displayModule };
 
 const displayModule = (() => {
-  //Creating dom elements-referances - App module will apply listeners to these elements
+  // Creating dom elements-referances - App module will apply listeners to these elements
 
   const createBarsIcon = () => {
     const myBarsIcon = new Image();
@@ -30,7 +30,7 @@ const displayModule = (() => {
     informationModule.grabElement('navbar').appendChild(projectTitle);
   };
 
-  let createProjectIcon = () => {
+  const createProjectIcon = () => {
     const myProjectIcon = new Image();
     myProjectIcon.src = projectIcon;
     myProjectIcon.classList.add('projectIcon');
@@ -42,21 +42,21 @@ const displayModule = (() => {
       );
   };
 
-  let createDropIcon = () => {
+  const createDropIcon = () => {
     const myDropIcon = new Image();
     myDropIcon.src = dropIcon;
     myDropIcon.classList.add('dropIcon');
     informationModule.grabElement('projectsBar').appendChild(myDropIcon);
   };
 
-  let createAddTodoButton = () => {
+  const createAddTodoButton = () => {
     const addTodoButton = document.createElement('button');
     addTodoButton.classList.add('addTodo');
     addTodoButton.textContent = 'Create todo';
     informationModule.grabElement('sideNav').appendChild(addTodoButton);
   };
 
-  let createBasicDomDisplayElements = () => {
+  const createBasicDomDisplayElements = () => {
     createBarsIcon();
     createProjectTitle();
     createProjectIcon();
@@ -66,17 +66,17 @@ const displayModule = (() => {
 
   createBasicDomDisplayElements();
 
-  //A basic function called to empty any container
+  // A basic function called to empty any container
 
-  let emptyDisplay = (element) => {
+  const emptyDisplay = (element) => {
     while (element.lastElementChild) {
       element.removeChild(element.lastElementChild);
     }
   };
 
-  //Functions used around the build to smooth-out the U.I.
+  // Functions used around the build to smooth-out the U.I.
 
-  let resetAnimation = () => {
+  const resetAnimation = () => {
     informationModule
       .grabElement('displayInfo')
       .classList.remove('displayInfoEmerge');
@@ -87,7 +87,7 @@ const displayModule = (() => {
     }, 1);
   };
 
-  let dropIconToggle = () => {
+  const dropIconToggle = () => {
     if (
       informationModule
         .grabElement('dropIcon')
@@ -107,18 +107,18 @@ const displayModule = (() => {
     }
   };
 
-  let clearToDoModal = () => {
+  const clearToDoModal = () => {
     informationModule.grabElement('toDoName').value = '';
     informationModule.grabElement('toDoDate').value = '';
     informationModule.grabElement('toDoText').value = '';
     informationModule.grabElement('prioritySelect').value = '';
   };
 
-  let clearProjectModal = () => {
+  const clearProjectModal = () => {
     informationModule.grabElement('projectName').value = '';
   };
 
-  let toggleSideNav = () => {
+  const toggleSideNav = () => {
     if (
       informationModule.grabElement('sideNav').classList.contains('sidenavHide')
     ) {
@@ -128,27 +128,27 @@ const displayModule = (() => {
     }
   };
 
-  //Updating the Project display of the .MainContainer with each projects created
+  // Updating the Project display of the .MainContainer with each projects created
 
-  let projectMainDisplay = () => {
+  const projectMainDisplay = () => {
     const projectHolder = document.createElement('div');
     projectHolder.classList.add('projectsHolder');
     informationModule.grabElement('displayInfo').appendChild(projectHolder);
     resetAnimation();
   };
 
-  //Creating a button to add more projects
+  // Creating a button to add more projects
 
-  let displayProjectButton = () => {
+  const displayProjectButton = () => {
     const addProjectButton = document.createElement('button');
     addProjectButton.classList.add('addProject');
     addProjectButton.textContent = 'CREATE PROJECT';
     informationModule.grabElement('displayInfo').appendChild(addProjectButton);
   };
 
-  //Pulling together previous functions
+  // Pulling together previous functions
 
-  let headerDisplay = () => {
+  const headerDisplay = () => {
     informationModule
       .grabElement('displayInfo')
       .classList.add('displayInfoEmerge');
@@ -157,12 +157,12 @@ const displayModule = (() => {
     projectMainDisplay();
   };
 
-  //Each time one of the referenced Projects from the sideNav is clicked; we want to be able to display all Todos
-  //of said Project , inside the main container
+  // Each time one of the referenced Projects from the sideNav is clicked; we want to be able to display all Todos
+  // of said Project , inside the main container
 
-  //Functions used inside each todo-displayed in the main container to add functionality to each todo
+  // Functions used inside each todo-displayed in the main container to add functionality to each todo
 
-  let assignPriorityColor = (check) => {
+  const assignPriorityColor = (check) => {
     return check === 'High'
       ? '#d72915'
       : check === 'Medium'
@@ -170,14 +170,14 @@ const displayModule = (() => {
       : '#1a901a';
   };
 
-  let changePriority = (check) => {
+  const changePriority = (check) => {
     return check === 'High' ? 'Medium' : check === 'Medium' ? 'Low' : 'High';
   };
 
-  let expandTodo = (element, info) => {
-    let todoText = document.createElement('p');
+  const expandTodo = (element, info) => {
+    const todoText = document.createElement('p');
     if (element.classList.contains('expanded')) {
-      let remove = element.querySelector('p');
+      const remove = element.querySelector('p');
       element.classList.remove('expanded');
       element.removeChild(remove);
       element.style.height = 'auto';
@@ -190,11 +190,11 @@ const displayModule = (() => {
     }
   };
 
-  let editTodo = (container) => {
-    let todoHeader = container.querySelector('.todoHeader');
-    let todoDate = container.querySelector('.todoDate');
-    let inputNewHeader = document.createElement('input');
-    let inputNewDate = document.createElement('input');
+  const editTodo = (container) => {
+    const todoHeader = container.querySelector('.todoHeader');
+    const todoDate = container.querySelector('.todoDate');
+    const inputNewHeader = document.createElement('input');
+    const inputNewDate = document.createElement('input');
     inputNewHeader.classList.add('newHeader');
     inputNewDate.classList.add('newDate');
     inputNewHeader.type = 'text';
@@ -208,13 +208,13 @@ const displayModule = (() => {
     container.classList.add('editing');
   };
 
-  let saveTodo = (container) => {
+  const saveTodo = (container) => {
     container.classList.remove('editing');
-    let grabHeader = container.querySelector('.newHeader');
-    let grabDate = container.querySelector('.newDate');
+    const grabHeader = container.querySelector('.newHeader');
+    const grabDate = container.querySelector('.newDate');
 
-    let todoHeader = document.createElement('h2');
-    let todoDate = document.createElement('h2');
+    const todoHeader = document.createElement('h2');
+    const todoDate = document.createElement('h2');
 
     todoHeader.classList.add('todoHeader');
     todoDate.classList.add('todoDate');
@@ -229,7 +229,7 @@ const displayModule = (() => {
     container.appendChild(todoDate);
   };
 
-  let replaceEditIcon = (container, icon, reference) => {
+  const replaceEditIcon = (container, icon, reference) => {
     container.removeChild(icon);
     const mySaveIcon = new Image();
     mySaveIcon.src = saveIcon;
@@ -237,28 +237,85 @@ const displayModule = (() => {
     container.insertBefore(mySaveIcon, reference);
   };
 
-  let replaceSaveIcon = (container, newIcon, reference) => {
-    let replace = document.querySelector('.saveIcon');
+  const replaceSaveIcon = (container, newIcon, reference) => {
+    const replace = document.querySelector('.saveIcon');
     container.removeChild(replace);
     container.insertBefore(newIcon, reference);
   };
 
-  //Main Todo Display logic;
-
-  let displayTodoList = (e) => {
+  const dTodo = function () {
     resetAnimation();
+    informationModule.projectsLibrary.forEach(displayTodo, this);
+  };
 
+  const createTodoDOM = (project, todo) => {
+    const todoContainer = document.createElement('div');
+    todoContainer.classList.add('todoView');
+    const todoHeader = document.createElement('h2');
+    const todoDate = document.createElement('h2');
+
+    todoHeader.classList.add('todoHeader');
+    todoDate.classList.add('todoDate');
+
+    todoContainer.style.borderLeftColor = assignPriorityColor(todo.priority);
+
+    todoHeader.textContent = project.todoLibrary[todo].toDoTitle;
+    todoDate.textContent = format(
+      new Date(project.todoLibrary[todo].date),
+      'MM/dd/yyyy'
+    );
+
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('imageContainer');
+
+    todoContainer.appendChild(todoHeader);
+    todoContainer.appendChild(todoDate);
+    todoContainer.appendChild(imageContainer);
+
+    informationModule.grabElement('displayInfo').appendChild(todoContainer);
+  };
+
+  const displayTodo = function (project) {
+    if (project.title === this.textContent) {
+      emptyDisplay(informationModule.grabElement('displayInfo'));
+      for (let todo in project.todoLibrary) {
+        createTodoDOM(project, todo);
+        const myExpandIcon = new Image();
+        myExpandIcon.src = expandIcon;
+        imageContainer.appendChild(myExpandIcon);
+
+        const myEditIcon = new Image();
+        myEditIcon.src = editIcon;
+        myEditIcon.classList.add('editIcon');
+        imageContainer.appendChild(myEditIcon);
+
+        const myPriorityIcon = new Image();
+        myPriorityIcon.src = priorityIcon;
+        imageContainer.appendChild(myPriorityIcon);
+
+        const myDeleteIcon = new Image();
+        myDeleteIcon.classList.add('deleteIcon');
+        myDeleteIcon.src = deleteIcon;
+
+        imageContainer.appendChild(myDeleteIcon);
+      }
+    }
+  };
+
+  // Main Todo Display logic;
+
+  const displayTodoList = (e) => {
+    resetAnimation();
     informationModule.projectsLibrary.forEach((project) => {
       if (project.title === e.target.textContent) {
         emptyDisplay(informationModule.grabElement('displayInfo'));
 
         for (let i = 0; i < project.todoLibrary.length; i++) {
-          let todoContainer = document.createElement('div');
+          const todoContainer = document.createElement('div');
           todoContainer.classList.add('todoView');
-          todoContainer.dataset.index = i;
 
-          let todoHeader = document.createElement('h2');
-          let todoDate = document.createElement('h2');
+          const todoHeader = document.createElement('h2');
+          const todoDate = document.createElement('h2');
 
           todoHeader.classList.add('todoHeader');
           todoDate.classList.add('todoDate');
@@ -273,7 +330,7 @@ const displayModule = (() => {
             'MM/dd/yyyy'
           );
 
-          let imageContainer = document.createElement('div');
+          const imageContainer = document.createElement('div');
           imageContainer.classList.add('imageContainer');
 
           const myExpandIcon = new Image();
@@ -292,7 +349,7 @@ const displayModule = (() => {
           const myDeleteIcon = new Image();
           myDeleteIcon.classList.add('deleteIcon');
           myDeleteIcon.src = deleteIcon;
-          myDeleteIcon.dataset.index = project.todoLibrary[i].index;
+
           imageContainer.appendChild(myDeleteIcon);
 
           todoContainer.appendChild(todoHeader);
@@ -303,7 +360,7 @@ const displayModule = (() => {
             .grabElement('displayInfo')
             .appendChild(todoContainer);
 
-          //Add event listeners to images
+          // Add event listeners to images
 
           myExpandIcon.addEventListener('click', () => {
             expandTodo(todoContainer, project.todoLibrary[i].description);
@@ -344,7 +401,8 @@ const displayModule = (() => {
           });
 
           myDeleteIcon.addEventListener('click', () => {
-            let check = todoContainer.querySelector('.todoHeader').textContent;
+            const check =
+              todoContainer.querySelector('.todoHeader').textContent;
 
             for (let i = 0; i < project.todoLibrary.length; i++) {
               if (project.todoLibrary[i].toDoTitle === check) {
@@ -364,9 +422,9 @@ const displayModule = (() => {
     });
   };
 
-  //Creating a header that once clicked searches for all todo's with due-day of today
+  // Creating a header that once clicked searches for all todo's with due-day of today
 
-  let createTodayDisplay = () => {
+  const createTodayDisplay = () => {
     resetAnimation();
     emptyDisplay(informationModule.grabElement('displayInfo'));
     for (let i = 0; i < informationModule.projectsLibrary.length; i++) {
@@ -381,12 +439,12 @@ const displayModule = (() => {
             new Date()
           )
         ) {
-          let todoContainer = document.createElement('div');
+          const todoContainer = document.createElement('div');
           todoContainer.classList.add('todoView');
           todoContainer.dataset.index = i;
 
-          let todoHeader = document.createElement('h2');
-          let todoDate = document.createElement('h2');
+          const todoHeader = document.createElement('h2');
+          const todoDate = document.createElement('h2');
 
           todoHeader.classList.add('todoHeader');
           todoDate.classList.add('todoDate');
@@ -402,7 +460,7 @@ const displayModule = (() => {
             'MM/dd/yyyy'
           );
 
-          let imageContainer = document.createElement('div');
+          const imageContainer = document.createElement('div');
           imageContainer.classList.add('imageContainer');
 
           const myExpandIcon = new Image();
@@ -437,36 +495,36 @@ const displayModule = (() => {
     }
   };
 
-  //Populating sideNav with all project created;
+  // Populating sideNav with all project created;
 
-  let updateProjectsSideNav = () => {
+  const updateProjectsSideNav = () => {
     emptyDisplay(informationModule.grabElement('projectsDisplay'));
     informationModule.projectsLibrary.forEach((project) => {
-      let temp = document.createElement('li');
-      temp.addEventListener('click', displayTodoList);
+      const temp = document.createElement('li');
+      temp.addEventListener('click', dTodo);
       temp.textContent = project.title;
       informationModule.grabElement('projectsDisplay').appendChild(temp);
     });
   };
 
-  //Pupulating select element with references to all projects created;
+  // Pupulating select element with references to all projects created;
 
-  let updateSelectOptions = () => {
+  const updateSelectOptions = () => {
     emptyDisplay(informationModule.grabElement('projectSelect'));
     for (let i = 0; i < informationModule.projectsLibrary.length; i++) {
-      let option = document.createElement('option');
+      const option = document.createElement('option');
       option.textContent = informationModule.projectsLibrary[i].title;
       option.value = informationModule.projectsLibrary[i].title;
       informationModule.grabElement('projectSelect').appendChild(option);
     }
   };
 
-  //Updating main container with names of all project's created and a way to remove each project
+  // Updating main container with names of all project's created and a way to remove each project
 
-  let updateProjectsMainDisplay = () => {
+  const updateProjectsMainDisplay = () => {
     emptyDisplay(informationModule.grabElement('projectsHolder'));
     informationModule.projectsLibrary.forEach((project) => {
-      let temp = document.createElement('div');
+      const temp = document.createElement('div');
       temp.textContent = project.title;
       temp.classList.add('projectSheet');
       informationModule.grabElement('projectsHolder').appendChild(temp);
@@ -477,7 +535,7 @@ const displayModule = (() => {
       temp.appendChild(deleteProject);
 
       deleteProject.addEventListener('click', (e) => {
-        let check = e.target.classList.value;
+        const check = e.target.classList.value;
 
         for (let i = 0; i < informationModule.projectsLibrary.length; i++) {
           if (
