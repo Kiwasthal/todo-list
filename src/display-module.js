@@ -2,15 +2,11 @@ import { controllerModule } from './controller-module';
 import { informationModule } from './information-module';
 import markIcon from './assets/mark.png';
 import projectIcon from './assets/projects.png';
-import expandIcon from './assets/expand.svg';
-import editIcon from './assets/edit.svg';
-import priorityIcon from './assets/priority.svg';
-import deleteIcon from './assets/delete.svg';
-import barsIcon from './assets/bars.svg';
-import saveIcon from './assets/save.svg';
-import dropIcon from './assets/drop.svg';
 import quillIcon from './assets/quill-pen.png';
 import { format, isSameDay, parseISO } from 'date-fns';
+import { todoUImodule } from './todoUI';
+import barsIcon from './assets/bars.svg';
+import dropIcon from './assets/drop.svg';
 export { displayModule };
 
 const displayModule = (() => {
@@ -65,8 +61,6 @@ const displayModule = (() => {
   };
 
   createBasicDomDisplayElements();
-
-  // A basic function called to empty any container
 
   const emptyDisplay = (element) => {
     while (element.lastElementChild) {
@@ -162,144 +156,9 @@ const displayModule = (() => {
 
   // Functions used inside each todo-displayed in the main container to add functionality to each todo
 
-  const assignPriorityColor = (check) => {
-    return check === 'High'
-      ? '#d72915'
-      : check === 'Medium'
-      ? '#d0a415'
-      : '#1a901a';
-  };
-
-  const changePriority = (check) => {
-    return check === 'High' ? 'Medium' : check === 'Medium' ? 'Low' : 'High';
-  };
-
-  const expandTodo = (element, info) => {
-    const todoText = document.createElement('p');
-    if (element.classList.contains('expanded')) {
-      const remove = element.querySelector('p');
-      element.classList.remove('expanded');
-      element.removeChild(remove);
-      element.style.height = 'auto';
-    } else {
-      element.style.height = '20vh';
-      element.classList.add('expanded');
-      todoText.textContent = info;
-      todoText.classList.add('todoText');
-      element.appendChild(todoText);
-    }
-  };
-
-  const editTodo = (container) => {
-    const todoHeader = container.querySelector('.todoHeader');
-    const todoDate = container.querySelector('.todoDate');
-    const inputNewHeader = document.createElement('input');
-    const inputNewDate = document.createElement('input');
-    inputNewHeader.classList.add('newHeader');
-    inputNewDate.classList.add('newDate');
-    inputNewHeader.type = 'text';
-    inputNewHeader.value = todoHeader.textContent;
-    inputNewDate.type = 'date';
-    inputNewDate.value = todoDate.textContent;
-    container.removeChild(todoHeader);
-    container.removeChild(todoDate);
-    container.appendChild(inputNewHeader);
-    container.appendChild(inputNewDate);
-    container.classList.add('editing');
-  };
-
-  const saveTodo = (container) => {
-    container.classList.remove('editing');
-    const grabHeader = container.querySelector('.newHeader');
-    const grabDate = container.querySelector('.newDate');
-
-    const todoHeader = document.createElement('h2');
-    const todoDate = document.createElement('h2');
-
-    todoHeader.classList.add('todoHeader');
-    todoDate.classList.add('todoDate');
-
-    todoHeader.textContent = grabHeader.value;
-
-    todoDate.textContent = format(new Date(grabDate.value), 'MM/dd/yyyy');
-
-    container.removeChild(grabHeader);
-    container.removeChild(grabDate);
-    container.appendChild(todoHeader);
-    container.appendChild(todoDate);
-  };
-
-  const replaceEditIcon = (container, icon, reference) => {
-    container.removeChild(icon);
-    const mySaveIcon = new Image();
-    mySaveIcon.src = saveIcon;
-    mySaveIcon.classList.add('saveIcon');
-    container.insertBefore(mySaveIcon, reference);
-  };
-
-  const replaceSaveIcon = (container, newIcon, reference) => {
-    const replace = document.querySelector('.saveIcon');
-    container.removeChild(replace);
-    container.insertBefore(newIcon, reference);
-  };
-
   const dTodo = function () {
     resetAnimation();
-    informationModule.projectsLibrary.forEach(displayTodo, this);
-  };
-
-  const createTodoDOM = (project, todo) => {
-    const todoContainer = document.createElement('div');
-    todoContainer.classList.add('todoView');
-    const todoHeader = document.createElement('h2');
-    const todoDate = document.createElement('h2');
-
-    todoHeader.classList.add('todoHeader');
-    todoDate.classList.add('todoDate');
-
-    todoContainer.style.borderLeftColor = assignPriorityColor(todo.priority);
-
-    todoHeader.textContent = project.todoLibrary[todo].toDoTitle;
-    todoDate.textContent = format(
-      new Date(project.todoLibrary[todo].date),
-      'MM/dd/yyyy'
-    );
-
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('imageContainer');
-
-    todoContainer.appendChild(todoHeader);
-    todoContainer.appendChild(todoDate);
-    todoContainer.appendChild(imageContainer);
-
-    informationModule.grabElement('displayInfo').appendChild(todoContainer);
-  };
-
-  const displayTodo = function (project) {
-    if (project.title === this.textContent) {
-      emptyDisplay(informationModule.grabElement('displayInfo'));
-      for (let todo in project.todoLibrary) {
-        createTodoDOM(project, todo);
-        const myExpandIcon = new Image();
-        myExpandIcon.src = expandIcon;
-        imageContainer.appendChild(myExpandIcon);
-
-        const myEditIcon = new Image();
-        myEditIcon.src = editIcon;
-        myEditIcon.classList.add('editIcon');
-        imageContainer.appendChild(myEditIcon);
-
-        const myPriorityIcon = new Image();
-        myPriorityIcon.src = priorityIcon;
-        imageContainer.appendChild(myPriorityIcon);
-
-        const myDeleteIcon = new Image();
-        myDeleteIcon.classList.add('deleteIcon');
-        myDeleteIcon.src = deleteIcon;
-
-        imageContainer.appendChild(myDeleteIcon);
-      }
-    }
+    informationModule.projectsLibrary.forEach(todoUImodule, this);
   };
 
   // Main Todo Display logic;
