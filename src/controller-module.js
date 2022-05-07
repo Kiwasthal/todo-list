@@ -1,8 +1,7 @@
 import { displayModule } from './display-module';
 import { projectFactory, todoFactory } from './factories';
 import { informationModule } from './information-module';
-import { format, isPast, parseISO, getMonth, getDay } from 'date-fns';
-import { el } from 'date-fns/locale';
+import { isPast, parseISO, getDay } from 'date-fns';
 export { controllerModule };
 
 const controllerModule = (() => {
@@ -26,7 +25,7 @@ const controllerModule = (() => {
     informationModule.projectsLibrary = JSON.parse(
       localStorage.getItem('mylocalStore')
     );
-    informationModule.projectsLibrary.forEach((project) => {
+    informationModule.projectsLibrary.forEach(project => {
       project.insertTodo = pushTodoToLibrary.addtoLibrary;
     });
     displayModule.updateProjectsSideNav();
@@ -44,7 +43,7 @@ const controllerModule = (() => {
 
   // A method for pushing projects to main array from info-module
 
-  const addToProjectsLibary = (project) => {
+  const addToProjectsLibary = project => {
     informationModule.projectsLibrary.push(project);
   };
 
